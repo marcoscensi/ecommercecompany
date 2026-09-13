@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /obrigado.html
+
+Sitemap: https://ecommercecompany.com.br/sitemap.xml

@@ -1,0 +1,70 @@
+# Painel de edição do blog — https://app.pagescms.org
+# Conecte este repositório e o painel monta o editor a partir daqui.
+
+media:
+  input: assets/img/blog
+  output: /assets/img/blog
+
+content:
+  - name: posts
+    label: Artigos do blog
+    type: collection
+    path: content/posts
+    filename: '{fields.titulo}.md'
+    view:
+      fields: [titulo, data, categoria, rascunho]
+      primary: titulo
+      sort: [data]
+      default:
+        sort: data
+        order: desc
+    fields:
+      - name: titulo
+        label: Título
+        type: string
+        required: true
+        description: Aparece como H1 do artigo e no Google. Ideal até 60 caracteres.
+
+      - name: data
+        label: Data de publicação
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+
+      - name: resumo
+        label: Resumo
+        type: text
+        description: 1 ou 2 frases. Vira a descrição no Google e o texto do card. Até 170 caracteres.
+
+      - name: categoria
+        label: Categoria
+        type: select
+        default: Tráfego pago
+        options:
+          values:
+            - Tráfego pago
+            - Meta Ads
+            - Google Ads
+            - Criativos
+            - Dados e rastreamento
+            - Gestão de e-commerce
+
+      - name: autor
+        label: Autor
+        type: string
+        default: Marcos Censi
+
+      - name: capa
+        label: Imagem de capa (opcional)
+        type: image
+
+      - name: rascunho
+        label: Rascunho
+        type: boolean
+        default: false
+        description: Marcado = não aparece no site publicado.
+
+      - name: body
+        label: Conteúdo
+        type: rich-text
