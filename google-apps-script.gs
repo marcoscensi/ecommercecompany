@@ -19,8 +19,8 @@
  * ============================================================================
  */
 
-// Deixe "" se não quiser receber e-mail a cada lead.
-var EMAIL_AVISO = "marcos.censi@ecommercecompany.com.br";
+// Um ou mais e-mails, separados por vírgula. Deixe "" para não receber aviso.
+var EMAIL_AVISO = "marcos.censi@ecommercecompany.com.br, marcosjr.ads@gmail.com";
 
 var COLUNAS = [
   ["enviado",     "Data/hora"],
