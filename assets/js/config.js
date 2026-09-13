@@ -31,7 +31,7 @@ window.ECC = {
   /* ---- Rastreamento ---------------------------------------------------
      Deixe "" para desativar. Só o ID, sem aspas extras nem "act_".        */
   metaPixel: "383730134063729",     // Pixel E-commerce Company
-  ga4:       "",                    // ex.: "G-XXXXXXXXXX"  (Google Analytics 4)
+  ga4:       "G-1MQWB9ZG11",        // Google Analytics 4
   googleAds: "",                    // ex.: "AW-XXXXXXXXX"  (tag do Google Ads)
 
   /* ---- Dados da empresa (usados nas páginas legais) ------------------- */
