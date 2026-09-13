@@ -28,6 +28,12 @@ window.ECC = {
      Enquanto estiver vazio, o formulário cai direto no WhatsApp.         */
   formEndpoint: "https://script.google.com/macros/s/AKfycbz7p4GcHdnZaHPG_-Dggg5z0eqxXu6GNDvnBInhzFQxJSwfk5eHg9hU3DZCTlyPN1i5/exec",
 
+  /* ---- Rastreamento ---------------------------------------------------
+     Deixe "" para desativar. Só o ID, sem aspas extras nem "act_".        */
+  metaPixel: "383730134063729",     // Pixel E-commerce Company
+  ga4:       "",                    // ex.: "G-XXXXXXXXXX"  (Google Analytics 4)
+  googleAds: "",                    // ex.: "AW-XXXXXXXXX"  (tag do Google Ads)
+
   /* ---- Dados da empresa (usados nas páginas legais) ------------------- */
   razaoSocial: "Grupo Censi Negócios Digitais LTDA",
   cnpj: "42.359.967/0001-04",

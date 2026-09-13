@@ -8,6 +8,45 @@
 
   var cfg = window.ECC || {};
 
+  /* ------------------------------------------------------ rastreamento
+     Meta Pixel e tags do Google, ligados só quando o ID está no config.js.
+     Eventos disparados:
+       PageView  -> toda página
+       Lead      -> /obrigado.html (formulário enviado)
+       Contact   -> clique em qualquer botão de WhatsApp                  */
+
+  var ehObrigado = /\/obrigado\.html$/.test(window.location.pathname);
+
+  if (cfg.metaPixel) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq("init", cfg.metaPixel);
+    fbq("track", "PageView");
+    if (ehObrigado) fbq("track", "Lead");
+  }
+
+  if (cfg.ga4 || cfg.googleAds) {
+    var idTag = cfg.ga4 || cfg.googleAds;
+    var g = document.createElement("script");
+    g.async = true;
+    g.src = "https://www.googletagmanager.com/gtag/js?id=" + idTag;
+    document.head.appendChild(g);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag("js", new Date());
+    if (cfg.ga4)       gtag("config", cfg.ga4);
+    if (cfg.googleAds) gtag("config", cfg.googleAds);
+    if (ehObrigado && cfg.ga4) gtag("event", "generate_lead");
+  }
+
+  function eventoContato() {
+    if (window.fbq) fbq("track", "Contact");
+    if (window.gtag && cfg.ga4) gtag("event", "contato_whatsapp");
+  }
+
   /* ---------------------------------------------------- links do WhatsApp */
 
   function urlZap(mensagem) {
@@ -20,6 +59,7 @@
     el.href = urlZap(el.getAttribute("data-zap-msg"));
     el.target = "_blank";
     el.rel = "noopener";
+    el.addEventListener("click", eventoContato);
   });
 
   document.querySelectorAll("[data-email]").forEach(function (el) {
@@ -155,6 +195,7 @@
         "Faturamento/mês: " + (dados.faturamento || "-") + "\n" +
         "Plataforma: " + (dados.plataforma || "-") + "\n" +
         "Desafio: " + (dados.desafio || "-");
+      eventoContato();
       window.location.href = urlZap(texto);
       return;
     }
