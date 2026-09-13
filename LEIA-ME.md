@@ -246,10 +246,10 @@ ecommercecompany/
 
 ## 7. Pendências conhecidas
 
-**Vídeo da Carla (27 MB).** O GitHub Pages aceita, então não trava o deploy —
-mas é pesado para quem assiste no 4G. Vale exportar no QuickTime
-(*Arquivo → Exportar como → 480p*) e salvar por cima de
-`assets/video/depoimento-carla-musa-luz.mp4`. Bruno e Fernanda já estão leves.
+**Vídeos** já estão comprimidos (Carla 9 MB, Fernanda 6 MB, Bruno 4 MB) com o
+`moov` no início, então começam a tocar antes de baixar tudo. Se um dia trocar
+algum vídeo, peça para comprimir de novo antes de subir — arquivo de WhatsApp
+ou export do QuickTime vem pesado.
 
 **Painel do blog (Pages CMS)** — o painel republica ao salvar porque cada
 salvamento é um commit na `main`, que dispara o workflow. Nada a configurar.
