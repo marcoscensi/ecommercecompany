@@ -31,7 +31,12 @@ var COLUNAS = [
   ["faturamento", "Faturamento/mês"],
   ["plataforma",  "Plataforma"],
   ["desafio",     "Desafio relatado"],
-  ["origem",      "Página de origem"]
+  ["origem",      "Página de origem"],
+  ["utm_source",   "utm_source"],
+  ["utm_medium",   "utm_medium"],
+  ["utm_campaign", "utm_campaign"],
+  ["utm_content",  "utm_content"],
+  ["utm_term",     "utm_term"]
 ];
 
 
@@ -67,11 +72,12 @@ function pegaAba() {
     aba = planilha.insertSheet("Leads");
   }
 
-  // Cria o cabeçalho na primeira execução
-  if (aba.getLastRow() === 0) {
-    var titulos = COLUNAS.map(function (c) { return c[1]; });
-    aba.appendRow(titulos);
-    aba.getRange(1, 1, 1, titulos.length)
+  // Cria o cabeçalho na primeira execução e completa colunas novas
+  var titulos = COLUNAS.map(function (c) { return c[1]; });
+  var existentes = aba.getLastRow() === 0 ? 0 : aba.getLastColumn();
+
+  if (existentes < titulos.length) {
+    aba.getRange(1, 1, 1, titulos.length).setValues([titulos])
        .setFontWeight("bold")
        .setBackground("#21841F")
        .setFontColor("#FFFFFF");

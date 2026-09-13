@@ -146,6 +146,7 @@
       origem: window.location.href,
       enviado: new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
     };
+    if (window.ECC_utms) Object.assign(dados, window.ECC_utms());
 
     /* keepalive: continua enviando mesmo se a pessoa sair pro Calendly */
     fetch(cfg.formEndpoint, {

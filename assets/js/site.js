@@ -42,6 +42,23 @@
     if (ehObrigado && cfg.ga4) gtag("event", "generate_lead");
   }
 
+  /* UTMs da URL atual (e guardadas na sessão, pra sobreviver à navegação
+     anúncio -> home -> formulário) */
+  function utms() {
+    var out = {};
+    var chaves = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+    var q = new URLSearchParams(window.location.search);
+    var guardadas = {};
+    try { guardadas = JSON.parse(sessionStorage.getItem("ecc_utms") || "{}"); } catch (e) {}
+    var temNova = chaves.some(function (k) { return q.get(k); });
+    chaves.forEach(function (k) {
+      out[k] = temNova ? (q.get(k) || "") : (guardadas[k] || "");
+    });
+    try { if (temNova) sessionStorage.setItem("ecc_utms", JSON.stringify(out)); } catch (e) {}
+    return out;
+  }
+  window.ECC_utms = utms;
+
   function eventoContato() {
     if (window.fbq) fbq("track", "Contact");
     if (window.gtag && cfg.ga4) gtag("event", "contato_whatsapp");
@@ -183,6 +200,7 @@
 
     dados.origem  = window.location.href;
     dados.enviado = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+    Object.assign(dados, utms());
 
     /* Sem endpoint configurado: manda pro WhatsApp com tudo preenchido */
     if (!cfg.formEndpoint) {
