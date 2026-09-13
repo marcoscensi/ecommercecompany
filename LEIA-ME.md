@@ -37,13 +37,14 @@ Além disso, revise no `index.html`:
 
 ```bash
 cd ~/Sites/ecommercecompany
-python3 -m http.server 8000
+python3 servidor.py
 ```
 
 Abra <http://localhost:8000>. Para parar, `Ctrl+C`.
 
-> Use o servidor local em vez de abrir o arquivo direto no Finder — os caminhos
-> começam com `/`, então só funcionam servidos.
+> Use o `servidor.py` em vez de abrir o arquivo direto no Finder ou do
+> `python3 -m http.server` — esse último não suporta *Range requests*, e sem isso
+> o Safari toca os vídeos **sem áudio**. No site publicado isso não acontece.
 
 ---
 
@@ -224,6 +225,7 @@ ecommercecompany/
 ├── content/posts/*.md            ← os artigos (você edita aqui ou no painel)
 ├── blog/                         ← GERADO pelo build.py, não edite à mão
 ├── build.py                      ← gera o blog e o sitemap
+├── servidor.py                   ← servidor local de teste (com áudio nos vídeos)
 │
 ├── assets/
 │   ├── css/site.css              ← todo o visual
@@ -262,5 +264,5 @@ salvamento é um commit na `main`, que dispara o workflow. Nada a configurar.
 | Mexer em texto da landing | `index.html` |
 | Mexer em cor, espaçamento, fonte | `assets/css/site.css` (variáveis no topo) |
 | Publicar artigo | <https://app.pagescms.org> |
-| Ver o site local | `python3 -m http.server 8000` |
+| Ver o site local | `python3 servidor.py` |
 | Publicar mudança feita na mão | `git add . && git commit -m "..." && git push` |
