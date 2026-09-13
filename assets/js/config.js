@@ -26,7 +26,7 @@ window.ECC = {
      Cole aqui a URL do App da Web do Google Apps Script.
      Passo a passo em LEIA-ME.md, seção "Leads na planilha".
      Enquanto estiver vazio, o formulário cai direto no WhatsApp.         */
-  formEndpoint: "",
+  formEndpoint: "https://script.google.com/macros/s/AKfycbz7p4GcHdnZaHPG_-Dggg5z0eqxXu6GNDvnBInhzFQxJSwfk5eHg9hU3DZCTlyPN1i5/exec",
 
   /* ---- Dados da empresa (usados nas páginas legais) ------------------- */
   razaoSocial: "Grupo Censi Negócios Digitais LTDA",
