@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Agendar reunião — E-commerce Company</title>
+<meta name="description" content="Escolha um horário para a apresentação da E-commerce Company. 45 minutos, pelo Google Meet.">
+<link rel="canonical" href="https://ecommercecompany.com.br/agendar/">
+<meta name="robots" content="noindex">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="E-commerce Company">
+<meta property="og:title" content="Agendar reunião — E-commerce Company">
+<meta property="og:description" content="Escolha um horário. 45 minutos, pelo Google Meet.">
+<meta property="og:url" content="https://ecommercecompany.com.br/agendar/">
+<meta property="og:image" content="https://ecommercecompany.com.br/assets/img/logo-fundo-escuro.png">
+
+<link rel="icon" href="/assets/img/simbolo-fundo-escuro.png" type="image/png">
+<meta name="theme-color" content="#0E100E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+<style>
+  body { min-height: 100dvh; display: flex; flex-direction: column; }
+
+  .ag-topo { display: flex; justify-content: center; padding: 22px 22px 0; }
+  .ag-topo img { height: 32px; width: auto; }
+
+  .ag { flex: 1; padding: 26px 22px 60px; }
+  .ag__caixa {
+    max-width: 880px; margin-inline: auto;
+    display: grid; grid-template-columns: 300px 1fr; gap: 0;
+    background: var(--superficie); border: 1px solid var(--borda-forte);
+    border-radius: var(--raio-lg); overflow: hidden;
+    box-shadow: 0 30px 70px -34px rgba(0,0,0,.9);
+  }
+  @media (max-width: 760px) { .ag__caixa { grid-template-columns: 1fr; } }
+
+  .ag__info {
+    padding: 30px 28px; border-right: 1px solid var(--borda);
+    background: var(--fundo-alt);
+  }
+  @media (max-width: 760px) { .ag__info { border-right: 0; border-bottom: 1px solid var(--borda); } }
+  .ag__info h1 { font-size: 1.45rem; margin: 10px 0 14px; }
+  .ag__info p { color: var(--texto-medio); font-size: .95rem; }
+  .ag__meta { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+  .ag__meta li { display: flex; gap: 10px; align-items: center; font-size: .92rem; color: var(--texto-medio); }
+  .ag__meta svg { flex-shrink: 0; color: var(--verde-vivo); }
+
+  .ag__passo { padding: 30px 28px; }
+  .ag__passo h2 { font-size: 1.2rem; margin-bottom: 18px; }
+
+  .dias { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .dia {
+    padding: 10px 14px; border-radius: var(--raio-sm);
+    background: var(--fundo); border: 1px solid var(--borda-forte); color: var(--texto);
+    font: 500 .9rem var(--fonte-titulo); line-height: 1.25; text-align: left;
+    transition: var(--transicao);
+  }
+  .dia small { display: block; font: 400 .74rem var(--fonte-texto); color: var(--texto-fraco); }
+  .dia:hover { border-color: var(--verde-vivo); }
+  .dia[data-sel="sim"] { border-color: var(--verde-vivo); background: var(--verde-suave); }
+  .dia[data-sel="sim"] small { color: var(--verde-vivo); }
+
+  .horas { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+  .hora {
+    padding: 12px 8px; border-radius: var(--raio-sm);
+    background: var(--fundo); border: 1px solid var(--borda-forte); color: var(--texto);
+    font: 600 .95rem var(--fonte-titulo);
+    transition: var(--transicao);
+  }
+  .hora:hover { border-color: var(--verde-vivo); color: var(--verde-vivo); }
+
+  .vazio { color: var(--texto-medio); font-size: .95rem; padding: 18px; border: 1px dashed var(--borda-forte); border-radius: var(--raio-sm); }
+
+  .carregando { display: flex; gap: 12px; align-items: center; color: var(--texto-fraco); font-size: .92rem; }
+  .carregando i { width: 16px; height: 16px; border: 2px solid var(--borda-forte); border-top-color: var(--verde-vivo); border-radius: 50%; animation: gira .8s linear infinite; }
+  @keyframes gira { to { transform: rotate(360deg); } }
+
+  .escolhido {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 12px 16px; margin-bottom: 20px;
+    background: var(--verde-suave); border: 1px solid rgba(47,191,42,.35); border-radius: var(--raio-sm);
+    font-size: .95rem;
+  }
+  .escolhido strong { color: var(--verde-vivo); }
+  .escolhido button { background: none; border: 0; color: var(--texto-medio); font-size: .85rem; text-decoration: underline; padding: 0; }
+
+  .ag__passo .campo input { padding: 13px 15px; }
+  .ag__erro { display: none; margin: -6px 0 14px; font-size: .88rem; color: #F1A8A2; }
+  .ag__erro[data-mostra="sim"] { display: block; }
+
+  [data-tela] { display: none; }
+  [data-tela][data-ativa="sim"] { display: block; animation: entra 300ms ease; }
+  @keyframes entra { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .fim { text-align: center; padding: 10px 0; }
+  .fim .obrigado__check { margin-bottom: 18px; }
+  .fim h2 { font-size: 1.5rem; }
+  .fim p { color: var(--texto-medio); }
+  .fim__quando { display: inline-block; margin: 6px 0 18px; padding: 10px 18px; border-radius: 100px; background: var(--verde-suave); color: var(--verde-vivo); font: 600 1rem var(--fonte-titulo); }
+
+  .ag-rodape { text-align: center; padding: 18px 22px 26px; font-size: .78rem; color: var(--texto-fraco); }
+  .ag-rodape a { color: var(--texto-medio); text-decoration: underline; }
+</style>
+</head>
+
+<body>
+<header class="ag-topo">
+  <a href="/"><img src="/assets/img/logo-transparente.png" alt="E-commerce Company" width="225" height="32"></a>
+</header>
+
+<main class="ag">
+  <div class="ag__caixa">
+
+    <aside class="ag__info">
+      <span class="etiqueta">Reunião online</span>
+      <h1>Apresentação E-commerce Company</h1>
+      <p>Uma conversa de 45 minutos para entender sua loja, seus números e o que faríamos nos primeiros 90 dias.</p>
+      <ul class="ag__meta">
+        <li>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          45 minutos
+        </li>
+        <li>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>
+          Google Meet — o link chega no seu e-mail
+        </li>
+        <li>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Horário de Brasília
+        </li>
+      </ul>
+    </aside>
+
+    <section class="ag__passo">
+
+      <!-- tela 1 · escolher horário -->
+      <div data-tela="horario" data-ativa="sim">
+        <h2>Escolha um horário</h2>
+        <div id="dias" class="dias"></div>
+        <div id="horas" class="horas"></div>
+        <div id="status" class="carregando"><i></i> Buscando horários livres…</div>
+      </div>
+
+      <!-- tela 2 · dados -->
+      <div data-tela="dados">
+        <h2>Quase lá</h2>
+        <div class="escolhido">
+          <span>📅 <strong id="resumo-horario"></strong></span>
+          <button type="button" id="trocar">trocar horário</button>
+        </div>
+
+        <form id="form-agenda" novalidate>
+          <div class="campo">
+            <label for="nome">Seu nome *</label>
+            <input type="text" id="nome" name="nome" required autocomplete="name">
+          </div>
+          <div class="campo">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="O convite com o link do Meet vai pra cá">
+          </div>
+          <div class="campo">
+            <label for="whatsapp">WhatsApp *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required autocomplete="tel" inputmode="numeric" placeholder="(00) 00000-0000">
+          </div>
+          <div class="campo">
+            <label for="loja">Site ou Instagram da loja</label>
+            <input type="text" id="loja" name="loja" autocomplete="url" autocapitalize="none">
+          </div>
+          <p class="ag__erro" id="erro"></p>
+          <button class="btn btn--primario btn--bloco btn--grande" type="submit">Confirmar reunião</button>
+          <p class="form-nota">Ao confirmar, você recebe o convite no e-mail. <a href="/politica-de-privacidade.html">Privacidade</a>.</p>
+        </form>
+      </div>
+
+      <!-- tela 3 · confirmado -->
+      <div data-tela="ok" class="fim">
+        <div class="obrigado__check">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2>Reunião confirmada!</h2>
+        <div class="fim__quando" id="ok-quando"></div>
+        <p>O convite com o link do Google Meet já foi pro seu e-mail — aceita ele pra entrar na sua agenda. Você recebe um lembrete um dia antes e uma hora antes.</p>
+        <p style="margin-top:16px"><a class="btn btn--fantasma" id="ok-meet" href="#" target="_blank" rel="noopener" hidden>Abrir link do Meet</a></p>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<footer class="ag-rodape">
+  <span data-preenche="razaoSocial">E-commerce Company</span> · CNPJ <span data-preenche="cnpj">—</span> ·
+  <a href="/politica-de-privacidade.html">Privacidade</a>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/agendar.js" defer></script>
+</body>
+</html>

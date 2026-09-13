@@ -105,10 +105,20 @@
     if (qualificado) redirecionaCalendly();
   }
 
+  function urlAgenda() {
+    if (!cfg.agendaEndpoint) return cfg.calendly || document.getElementById("btn-agenda").href;
+    var p = new URLSearchParams({
+      nome: respostas.nome || "", whatsapp: respostas.whatsapp || "",
+      loja: respostas.loja || "", faturamento: respostas.faturamento || ""
+    });
+    return "/agendar/?" + p.toString();
+  }
+
   function redirecionaCalendly() {
     var btn = document.getElementById("btn-agenda");
     var txt = document.getElementById("contagem");
-    var url = btn.href;
+    var url = urlAgenda();
+    btn.href = url;
     var seg = 5;
     var tick = function () {
       if (txt) txt.textContent = "Abrindo a agenda em " + seg + "s…";

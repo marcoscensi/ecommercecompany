@@ -28,6 +28,13 @@ window.ECC = {
      Enquanto estiver vazio, o formulário cai direto no WhatsApp.         */
   formEndpoint: "https://script.google.com/macros/s/AKfycbz7p4GcHdnZaHPG_-Dggg5z0eqxXu6GNDvnBInhzFQxJSwfk5eHg9hU3DZCTlyPN1i5/exec",
 
+  /* ---- Agendamento ----------------------------------------------------
+     URL do App da Web do script google-apps-script-agenda.gs.
+     Passo a passo em LEIA-ME.md, seção "Agendamento".
+     Enquanto vazio, o /diagnostico manda pro Calendly.                  */
+  agendaEndpoint: "",
+  calendly: "https://calendly.com/marcos-censi-ecommercecompany/30min",
+
   /* ---- Rastreamento ---------------------------------------------------
      Deixe "" para desativar. Só o ID, sem aspas extras nem "act_".        */
   metaPixel: "383730134063729",     // Pixel E-commerce Company

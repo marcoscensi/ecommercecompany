@@ -183,6 +183,50 @@ O nome do arquivo vira o endereço: `roas-alto-caixa-vazio.md` →
 
 ---
 
+## 4b. Agendamento de reuniões (substitui o Calendly)
+
+Página: **/agendar/**. Backend: `google-apps-script-agenda.gs`, rodando na conta
+**marcos.censi@ecommercecompany.com.br** (é a agenda dela que recebe as reuniões).
+
+### Configurar (uma vez)
+
+1. No Google Agenda dessa conta, crie uma agenda nova chamada exatamente
+   **Disponibilidade** (engrenagem → Adicionar agenda → Criar nova agenda).
+2. Abra <https://script.google.com/create>, apague tudo e cole o conteúdo de
+   `google-apps-script-agenda.gs`. Salve. Renomeie o projeto pra "Agenda site".
+3. Menu lateral **Serviços** (+) → **Google Calendar API** → Adicionar.
+   (é o que gera o link do Meet)
+4. **Implantar → Nova implantação** → App da Web → Executar como **Eu** →
+   Quem pode acessar **Qualquer pessoa** → Implantar → autorizar.
+5. Copie a URL `/exec` e cole em `assets/js/config.js` → `agendaEndpoint`.
+   Publique (`git add . && git commit -m "agenda" && git push`).
+
+A partir daí o `/diagnostico/` manda os qualificados pro `/agendar/` em vez do
+Calendly, já com nome e WhatsApp preenchidos.
+
+### Abrir horários (toda semana)
+
+Crie blocos na agenda **Disponibilidade**: "ter 10h–14h", "qui 15h–18h"…
+Pode ser recorrente, pode ser pelo celular. A página oferece só o que está
+**dentro de um bloco** e **livre na agenda principal**. Sem bloco = sem horário.
+
+Regras (no topo do script, `CFG`): reunião de 45 min · 30 min de folga antes e
+depois de qualquer compromisso · mínimo 4 h de antecedência · até 4 dias à
+frente · horários de 30 em 30 min.
+
+### O que acontece quando alguém marca
+
+- Evento criado na sua agenda principal, com link do Meet, e a pessoa convidada
+  (ela recebe o convite do Google, com lembrete 1 dia e 1 h antes)
+- E-mail de aviso pra você com nome, WhatsApp, loja e origem/UTM
+- Pixel dispara `Schedule`; GA4 dispara `schedule`
+- Se dois abrirem o mesmo horário, o segundo recebe "acabou de ser ocupado"
+
+Pra mudar o script depois: editar → **Implantar → Gerenciar implantações →
+Nova versão** (não "Nova implantação", que troca a URL).
+
+---
+
 ## 5. A página que o Google pede (verificação OAuth)
 
 Já está pronta: **`politica-de-privacidade.html`**.
@@ -218,6 +262,8 @@ Google do projeto no Cloud.
 ecommercecompany/
 ├── index.html                    ← a landing page
 ├── obrigado.html                 ← pós-envio do formulário (bom p/ conversão)
+├── diagnostico/                  ← formulário de qualificação (anúncios)
+├── agendar/                      ← agendamento de reunião (substitui Calendly)
 ├── politica-de-privacidade.html  ← exigida pelo Google
 ├── termos-de-uso.html
 ├── 404.html
@@ -237,7 +283,8 @@ ecommercecompany/
 ├── .pages.yml                    ← configura o painel do blog
 ├── .github/workflows/publicar.yml← deploy automático no GitHub Pages
 ├── CNAME                         ← domínio (não apagar)
-├── google-apps-script.gs         ← código para colar no Apps Script
+├── google-apps-script.gs         ← leads → planilha (colar no Apps Script)
+├── google-apps-script-agenda.gs  ← agendamento → Google Agenda (idem)
 ├── robots.txt, sitemap.xml
 └── LEIA-ME.md                    ← este arquivo
 ```
