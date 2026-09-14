@@ -32,7 +32,7 @@ window.ECC = {
      URL do App da Web do script google-apps-script-agenda.gs.
      Passo a passo em LEIA-ME.md, seção "Agendamento".
      Enquanto vazio, o /diagnostico manda pro Calendly.                  */
-  agendaEndpoint: "",
+  agendaEndpoint: "https://script.google.com/macros/s/AKfycbxPujHmiHJz1UWH1k12jtmfkAzm_M1s3c5Dqi4TleZW6VyCuUvsBIPOwyHZO3xz9zBJWA/exec",
   calendly: "https://calendly.com/marcos-censi-ecommercecompany/30min",
 
   /* ---- Rastreamento ---------------------------------------------------
