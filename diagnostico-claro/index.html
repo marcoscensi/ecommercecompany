@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tráfego Pago para E-commerce — E-commerce Company</title>
+<meta name="description" content="Conheça nossos serviços de aceleração de vendas para E-commerce.">
+<link rel="canonical" href="https://ecommercecompany.com.br/diagnostico-claro/">
+<meta name="robots" content="noindex">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="E-commerce Company">
+<meta property="og:title" content="Tráfego Pago para E-commerce">
+<meta property="og:description" content="Conheça nossos serviços de aceleração de vendas para E-commerce.">
+<meta property="og:url" content="https://ecommercecompany.com.br/diagnostico-claro/">
+<meta property="og:image" content="https://ecommercecompany.com.br/assets/img/logo-fundo-escuro.png">
+
+<link rel="icon" href="/assets/img/simbolo-fundo-escuro.png" type="image/png">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+<style>
+  /* ---------------------------------------------- página de aplicação ---
+     Sem menu, sem rodapé cheio: quem chega por anúncio só tem uma coisa
+     pra fazer aqui. Uma pergunta por tela, no estilo Typeform.          */
+
+  body { min-height: 100dvh; display: flex; flex-direction: column; }
+
+  .apl-progresso {
+    position: fixed; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--borda); z-index: 50;
+  }
+  .apl-progresso i {
+    display: block; height: 100%; width: 0;
+    background: var(--verde-vivo);
+    transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .apl {
+    flex: 1; display: grid; place-items: center;
+    padding: 28px 22px 60px;
+  }
+
+  .etapa {
+    width: 100%; max-width: 640px;
+    display: none;
+    animation: entra 360ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  .etapa[data-ativa="sim"] { display: block; }
+  @keyframes entra { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  .etapa__num {
+    font-family: var(--fonte-titulo); font-size: .78rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--verde-vivo);
+    margin-bottom: 14px;
+  }
+  .etapa h1, .etapa h2 {
+    font-size: clamp(1.45rem, 4.6vw, 2.1rem);
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .etapa h1 { font-size: clamp(1.8rem, 6vw, 2.7rem); }
+  .etapa__desc { color: var(--texto-medio); font-size: 1.04rem; margin-bottom: 26px; }
+  .etapa__desc p { margin-bottom: .55em; }
+  .etapa__desc em { color: var(--texto-fraco); font-style: normal; font-size: .95rem; }
+  .etapa__desc strong { color: var(--texto); }
+
+  .etapa .campo { margin: 0 0 18px; }
+  .etapa .campo input { font-size: 1.15rem; padding: 17px 18px; }
+
+  .opcoes { display: grid; gap: 10px; margin-bottom: 22px; }
+  .opcao {
+    display: flex; align-items: center; gap: 14px;
+    width: 100%; text-align: left;
+    padding: 16px 18px;
+    background: var(--superficie); border: 1px solid var(--borda-forte);
+    border-radius: var(--raio-sm); color: var(--texto);
+    font-size: 1.02rem; line-height: 1.35;
+    transition: var(--transicao);
+  }
+  .opcao:hover { border-color: var(--verde-vivo); background: var(--verde-suave); }
+  .opcao kbd {
+    flex-shrink: 0; display: grid; place-items: center;
+    width: 26px; height: 26px; border-radius: 6px;
+    border: 1px solid var(--borda-forte); background: var(--fundo);
+    font: 600 .75rem var(--fonte-titulo); color: var(--texto-medio);
+  }
+  .opcao:hover kbd { border-color: var(--verde-vivo); color: var(--verde-vivo); }
+
+  .etapa__acoes { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .etapa__dica { font-size: .84rem; color: var(--texto-fraco); }
+  .etapa__dica kbd {
+    padding: 2px 6px; border-radius: 4px; border: 1px solid var(--borda-forte);
+    font: 600 .72rem var(--fonte-titulo); color: var(--texto-medio);
+  }
+  .etapa__erro {
+    display: none; margin: -8px 0 16px;
+    font-size: .88rem; color: #F1A8A2;
+  }
+  .etapa__erro[data-mostra="sim"] { display: block; }
+
+  .voltar {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-bottom: 22px; font-size: .88rem; color: var(--texto-fraco);
+    background: none; border: 0; padding: 0;
+  }
+  .voltar:hover { color: var(--texto); }
+
+  .fim { text-align: center; }
+  .fim .obrigado__check { margin-bottom: 22px; }
+  .fim .etapa__desc { max-width: 46ch; margin-inline: auto; }
+  .fim .btn { margin-top: 6px; }
+  .fim__aguarde { margin-top: 18px; font-size: .84rem; color: var(--texto-fraco); }
+
+  .apl-rodape {
+    text-align: center; padding: 18px 22px 26px;
+    font-size: .78rem; color: var(--texto-fraco);
+  }
+  .apl-rodape a { color: var(--texto-medio); text-decoration: underline; }
+</style>
+
+<style>
+  /* ---------------------------------------------------- tema claro ----
+     Mesma página, só a paleta invertida. Verde da marca (#21841F) no
+     lugar do verde vivo, que é calibrado pra fundo escuro.               */
+  :root {
+    --fundo:        #FFFFFF;
+    --fundo-alt:    #F9F9F9;
+    --superficie:   #F7F8F7;
+    --superficie-2: #EFF1EF;
+    --borda:        #E3E6E3;
+    --borda-forte:  #CFD4CF;
+    --texto:        #1B1D1B;
+    --texto-medio:  #4F554F;
+    --texto-fraco:  #828788;
+    --verde-vivo:   #21841F;
+    --verde-suave:  rgba(33, 132, 31, 0.09);
+  }
+  body { background: var(--fundo); }
+  .btn--primario { color: #FFFFFF; box-shadow: 0 6px 22px -8px rgba(33,132,31,.55); }
+  .btn--primario:hover { background: #1E7A1C; box-shadow: 0 12px 30px -10px rgba(33,132,31,.6); }
+  .campo input { background: #FFFFFF; }
+  .etapa__erro { color: #B93A2F; }
+  .apl-progresso { background: var(--borda); }
+  ::selection { background: var(--verde-vivo); color: #fff; }
+  .zap { box-shadow: 0 8px 26px -6px rgba(0,0,0,.25); }
+</style>
+</head>
+
+<body>
+<div class="apl-progresso" aria-hidden="true"><i id="barra"></i></div>
+
+<main class="apl" id="app">
+
+  <!-- 0 · boas-vindas -->
+  <section class="etapa" data-etapa="0" data-ativa="sim">
+    <h1>🛒 <span class="verde">Tráfego pago</span> especializado em <span class="verde">lojas online.</span></h1>
+    <div class="etapa__desc">
+      <p>🚀 Eleve seu <strong>ticket médio</strong><br>
+         📊 Otimize sua <strong>taxa de conversão</strong><br>
+         💰 Aumente a <strong>recompra</strong> de clientes</p>
+      <p><em>⟶ Exclusivo para lojas que investem (ou estejam dispostas a investir) <strong>no mínimo 3 mil por mês em anúncios.</strong></em></p>
+    </div>
+    <div class="etapa__acoes">
+      <button class="btn btn--primario btn--grande" type="button" data-avanca>Começar</button>
+      <span class="etapa__dica">leva menos de 1 minuto</span>
+    </div>
+  </section>
+
+  <!-- 1 · nome -->
+  <section class="etapa" data-etapa="1">
+    <div class="etapa__num">1 → 5</div>
+    <h2>Primeiro, qual o seu nome?</h2>
+    <div class="campo">
+      <label for="nome" class="pular">Seu nome</label>
+      <input type="text" id="nome" name="nome" autocomplete="given-name" placeholder="Digite aqui" required>
+    </div>
+    <p class="etapa__erro" data-erro>Preencha seu nome pra continuar.</p>
+    <div class="etapa__acoes">
+      <button class="btn btn--primario" type="button" data-avanca>OK</button>
+      <span class="etapa__dica">ou aperte <kbd>Enter ↵</kbd></span>
+    </div>
+  </section>
+
+  <!-- 2 · whatsapp -->
+  <section class="etapa" data-etapa="2">
+    <button class="voltar" type="button" data-volta>← voltar</button>
+    <div class="etapa__num">2 → 5</div>
+    <h2><span data-nome>Você</span>, qual seu WhatsApp?</h2>
+    <div class="campo">
+      <label for="whatsapp" class="pular">WhatsApp</label>
+      <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel-national" inputmode="numeric" placeholder="(00) 00000-0000" required>
+    </div>
+    <p class="etapa__erro" data-erro>Digite um WhatsApp válido com DDD.</p>
+    <div class="etapa__acoes">
+      <button class="btn btn--primario" type="button" data-avanca>OK</button>
+      <span class="etapa__dica">ou aperte <kbd>Enter ↵</kbd></span>
+    </div>
+  </section>
+
+  <!-- 3 · site / instagram -->
+  <section class="etapa" data-etapa="3">
+    <button class="voltar" type="button" data-volta>← voltar</button>
+    <div class="etapa__num">3 → 5</div>
+    <h2>Qual o link do site ou Instagram da sua empresa?</h2>
+    <div class="campo">
+      <label for="loja" class="pular">Site ou Instagram</label>
+      <input type="text" id="loja" name="loja" autocomplete="url" autocapitalize="none" placeholder="sualoja.com.br ou @sualoja" required>
+    </div>
+    <p class="etapa__erro" data-erro>Coloque o site ou o @ do Instagram.</p>
+    <div class="etapa__acoes">
+      <button class="btn btn--primario" type="button" data-avanca>OK</button>
+      <span class="etapa__dica">ou aperte <kbd>Enter ↵</kbd></span>
+    </div>
+  </section>
+
+  <!-- 4 · faturamento -->
+  <section class="etapa" data-etapa="4">
+    <button class="voltar" type="button" data-volta>← voltar</button>
+    <div class="etapa__num">4 → 5</div>
+    <h2><span data-nome>Você</span>, qual o faturamento médio mensal do seu e-commerce?</h2>
+    <div class="opcoes" data-campo="faturamento">
+      <button class="opcao" type="button" data-valor="Menos de 30 mil" data-desqualifica><kbd>A</kbd> Menos de 30 mil</button>
+      <button class="opcao" type="button" data-valor="Entre 30 e 50 mil"><kbd>B</kbd> Entre 30 e 50 mil</button>
+      <button class="opcao" type="button" data-valor="Entre 50 e 100 mil"><kbd>C</kbd> Entre 50 e 100 mil</button>
+      <button class="opcao" type="button" data-valor="Entre 100 e 500 mil"><kbd>D</kbd> Entre 100 e 500 mil</button>
+      <button class="opcao" type="button" data-valor="Acima de 500 mil"><kbd>E</kbd> Acima de 500 mil</button>
+    </div>
+  </section>
+
+  <!-- 5 · investimento -->
+  <section class="etapa" data-etapa="5">
+    <button class="voltar" type="button" data-volta>← voltar</button>
+    <div class="etapa__num">5 → 5</div>
+    <h2>Para entregarmos resultados efetivos, o <span class="verde">investimento mínimo que recomendamos é de R$ 3.000 por mês</span>, além da nossa taxa de serviço.</h2>
+    <p class="etapa__desc">Esse investimento seria viável pra você no momento?</p>
+    <div class="opcoes" data-campo="investimento">
+      <button class="opcao" type="button" data-valor="Sim, pronto para investir"><kbd>A</kbd> 🚀 Sim, estou pronto para investir no crescimento da minha empresa.</button>
+      <button class="opcao" type="button" data-valor="Não é o momento" data-desqualifica><kbd>B</kbd> 🥲 Infelizmente não estou no momento de dar esse passo.</button>
+    </div>
+  </section>
+
+  <!-- ✅ qualificado -->
+  <section class="etapa fim" data-etapa="ok">
+    <div class="obrigado__check">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <h2>✅ 98% concluído!</h2>
+    <div class="etapa__desc">
+      <p>Você está a um passo de <strong>transformar seu e-commerce</strong> em uma máquina de vendas!</p>
+      <p>Toque no botão abaixo e <strong>agende uma reunião conosco</strong> 👇🏼</p>
+    </div>
+    <a class="btn btn--primario btn--grande" id="btn-agenda" href="https://calendly.com/marcos-censi-ecommercecompany/30min">Agendar minha reunião</a>
+    <p class="fim__aguarde" id="contagem"></p>
+  </section>
+
+  <!-- ❌ desqualificado -->
+  <section class="etapa fim" data-etapa="nao">
+    <h2>Parabéns pelo interesse em crescer sua empresa!</h2>
+    <div class="etapa__desc">
+      <p>Agora nosso time irá avaliar as informações enviadas.</p>
+      <p>Se fizer sentido pro momento do seu negócio, entraremos em contato nos próximos dias.</p>
+    </div>
+    <a class="btn btn--fantasma btn--grande" data-zap data-zap-msg="Olá Marcos vim pelo formulário! Gostaria de entender melhor sobre a parte de investimento em tráfego pago para poder começar a anunciar na minha loja." href="#">Falar no WhatsApp</a>
+  </section>
+
+</main>
+
+<footer class="apl-rodape">
+  <span data-preenche="razaoSocial">E-commerce Company</span> · CNPJ <span data-preenche="cnpj">—</span> ·
+  <a href="/politica-de-privacidade.html">Privacidade</a>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/diagnostico.js" defer></script>
+</body>
+</html>
