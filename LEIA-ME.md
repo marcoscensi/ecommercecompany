@@ -262,7 +262,8 @@ Google do projeto no Cloud.
 ecommercecompany/
 ├── index.html                    ← a landing page
 ├── obrigado.html                 ← pós-envio do formulário (bom p/ conversão)
-├── diagnostico/                  ← formulário de qualificação (anúncios)
+├── diagnostico/                  ← formulário de qualificação (anúncios) — fundo branco
+├── diagnostico_v2/               ← mesma página, fundo escuro (teste A/B)
 ├── agendar/                      ← agendamento de reunião (substitui Calendly)
 ├── politica-de-privacidade.html  ← exigida pelo Google
 ├── termos-de-uso.html
