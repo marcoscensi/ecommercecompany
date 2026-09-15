@@ -79,7 +79,7 @@
       var b = document.createElement("button");
       b.type = "button";
       b.className = "dia";
-      b.innerHTML = "<small>" + partes[0] + "</small>" + partes[1] + "<small>" + d.horarios.length + " horário" + (d.horarios.length > 1 ? "s" : "") + "</small>";
+      b.innerHTML = "<small>" + partes[0] + "</small>" + partes[1];
       b.addEventListener("click", function () { selecionaDia(i); });
       elDias.appendChild(b);
     });
