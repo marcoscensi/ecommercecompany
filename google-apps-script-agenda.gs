@@ -32,6 +32,7 @@ var CFG = {
   passoMin:              30,    // horários oferecidos de 30 em 30 min (10:00, 10:30, ...)
   antecedenciaMinH:      4,     // não deixa marcar pra daqui a menos de 4 horas
   diasAFrente:           4,     // mostra hoje + 4 dias
+  blocoMaxH:             16,    // bloco de disponibilidade maior que isso é ignorado (evita evento de vários dias)
 
   emailAviso:            "marcos.censi@ecommercecompany.com.br, marcosjr.ads@gmail.com",
   lembreteMin:           [1440, 60]   // lembretes do Google pro convidado: 1 dia e 1 hora antes
@@ -79,7 +80,12 @@ function horariosLivres() {
   var disp = agendaPorNome(CFG.agendaDisponibilidade);
   if (!disp) throw new Error('Agenda "' + CFG.agendaDisponibilidade + '" não encontrada. Crie uma agenda com esse nome exato.');
 
-  var blocos = disp.getEvents(agora, fimJanela).map(function (ev) {
+  // Blocos de disponibilidade. Um bloco de vários dias (ex.: "de hoje até
+  // 31/12") abriria a madrugada inteira — por isso só vale bloco de até 16 h.
+  // Pra abrir a semana toda, use evento RECORRENTE (repetir: dias úteis).
+  var blocos = disp.getEvents(agora, fimJanela).filter(function (ev) {
+    return !ev.isAllDayEvent() && (ev.getEndTime() - ev.getStartTime()) <= CFG.blocoMaxH * 3600000;
+  }).map(function (ev) {
     return { ini: ev.getStartTime(), fim: ev.getEndTime() };
   });
 
