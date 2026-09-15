@@ -4,7 +4,8 @@
    Substitui o formulário do Respondi. Mesmo fluxo, mesmas regras:
      - "Menos de 30 mil" de faturamento  -> desqualificado
      - "Não é o momento" de investir      -> desqualificado
-     - qualificado -> Calendly (+ evento Lead no Pixel / generate_lead no GA4)
+     - qualificado -> /agendar/ (+ evento Lead no Pixel / generate_lead no GA4)
+   Eventos: StartForm ao clicar em "Começar", Lead / LeadDesqualificado no fim.
    Cada resposta final (qualificado ou não) vira uma linha na planilha.
    ========================================================================= */
 
@@ -18,6 +19,7 @@
   var atual = 0;
   var respostas = {};
   var enviado = false;
+  var iniciou = false;
 
   /* ------------------------------------------------------------ helpers */
 
@@ -75,9 +77,18 @@
     if (sec.querySelector("[data-campo]")) return;   /* telas de escolha só avançam clicando numa opção */
     if (!valida(sec)) { erro(sec, true); return; }
     erro(sec, false);
+    if (ordem[atual] === "0") rastreiaInicio();
     if (ordem[atual] === "1") atualizaNome();
     atual += 1;
     mostra(ordem[atual]);
+  }
+
+  /* dispara uma vez, quando a pessoa sai da tela de boas-vindas */
+  function rastreiaInicio() {
+    if (iniciou) return;
+    iniciou = true;
+    if (window.fbq) fbq("trackCustom", "StartForm", { content_name: "diagnostico" });
+    if (window.gtag && cfg.ga4) gtag("event", "start_form", { origem: "diagnostico" });
   }
 
   function volta() {
