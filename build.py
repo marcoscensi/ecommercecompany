@@ -206,6 +206,7 @@ def moldura(titulo, descricao, canonico, conteudo, jsonld="", noindex=False):
 <meta property="og:image" content="{SITE}/assets/img/logo-fundo-escuro.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/img/simbolo-fundo-escuro.png" type="image/png">
+<meta name="facebook-domain-verification" content="i8cy4e5t1s4coixsv11b6j4ahmvbo8">
 <meta name="theme-color" content="#0E100E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
