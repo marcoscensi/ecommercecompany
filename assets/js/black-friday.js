@@ -29,16 +29,16 @@
       return;
     }
     el.href = urlCheckout();
+    /* Evento próprio, não InitiateCheckout: a Kiwify já dispara o
+       InitiateCheckout (e o begin_checkout do GA4) quando o checkout abre,
+       com event ID e pela API de Conversões. Disparar aqui também contaria
+       2 finalizações por pessoa. */
     el.addEventListener("click", function () {
-      if (window.fbq) fbq("track", "InitiateCheckout", {
-        content_name: "operacao-black-friday",
-        value: Number(cfg.precoBlackFriday) || 47,
-        currency: "BRL"
+      if (window.fbq) fbq("trackCustom", "CliqueComprar", {
+        content_name: "operacao-black-friday"
       });
-      if (window.gtag && cfg.ga4) gtag("event", "begin_checkout", {
-        currency: "BRL",
-        value: Number(cfg.precoBlackFriday) || 47,
-        items: [{ item_name: "Operação Black Friday" }]
+      if (window.gtag && cfg.ga4) gtag("event", "clique_comprar", {
+        item_name: "Operação Black Friday"
       });
     });
   });
