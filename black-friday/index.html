@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mini Curso Black Friday para E-commerce — E-commerce Company</title>
+<meta name="description" content="Aprenda a preparar sua loja, seu Instagram, suas campanhas e suas ofertas para a Black Friday. Aulas gravadas + planilha de acompanhamento por R$ 47.">
+<link rel="canonical" href="https://ecommercecompany.com.br/black-friday/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="E-commerce Company">
+<meta property="og:title" content="Mini Curso Black Friday para E-commerce — R$ 47">
+<meta property="og:description" content="Preparação, site e Instagram, campanhas, ofertas, criativos e planilha de acompanhamento. Aulas gravadas, acesso imediato.">
+<meta property="og:url" content="https://ecommercecompany.com.br/black-friday/">
+<meta property="og:image" content="https://ecommercecompany.com.br/assets/img/logo-fundo-escuro.png">
+
+<link rel="icon" href="/assets/img/simbolo-fundo-escuro.png" type="image/png">
+<meta name="facebook-domain-verification" content="i8cy4e5t1s4coixsv11b6j4ahmvbo8">
+<meta name="theme-color" content="#0E100E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+<style>
+  /* ------------------------------------------------ página de venda BF ---
+     Mesma identidade do site, com o preto mais fundo da Black Friday.
+     Página de anúncio: sem menu, só uma ação possível (comprar).        */
+
+  body { background: #080908; }
+
+  /* faixa do topo */
+  .bf-faixa {
+    background: var(--verde-vivo); color: #06120A;
+    text-align: center; padding: 9px 16px;
+    font-family: var(--fonte-titulo); font-weight: 600; font-size: .86rem;
+    letter-spacing: .01em;
+  }
+
+  .bf-topo { padding: 22px 0 0; }
+  /* o PNG é quadrado com muita sobra: recorta só a marca */
+  .bf-logo { display: block; width: 146px; height: 46px; overflow: hidden; }
+  .bf-logo img { width: 200px; height: 200px; max-width: none; margin: -76px 0 0 -28px; }
+
+  /* ---- hero */
+  .bf-hero { position: relative; padding: clamp(46px, 8vw, 96px) 0 clamp(60px, 8vw, 100px); overflow: hidden; }
+  .bf-hero::before {
+    content: ""; position: absolute; inset: -30% -10% auto; height: 120%;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(47,191,42,.16), transparent 70%);
+    pointer-events: none;
+  }
+  .bf-hero .wrap { position: relative; text-align: center; max-width: 900px; }
+  .bf-selo {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 7px 15px 7px 8px; margin-bottom: 26px;
+    border: 1px solid var(--borda-forte); border-radius: 100px;
+    background: rgba(255,255,255,.03);
+    font-size: .86rem; color: var(--texto-medio);
+  }
+  .bf-selo b {
+    background: #fff; color: #000; border-radius: 100px;
+    padding: 3px 10px; font-family: var(--fonte-titulo); font-size: .72rem;
+    letter-spacing: .1em; text-transform: uppercase;
+  }
+  .bf-hero h1 {
+    font-size: clamp(2.15rem, 6.4vw, 4.1rem); font-weight: 800;
+    letter-spacing: -0.035em; margin-bottom: 22px;
+  }
+  .bf-hero .subtitulo { margin: 0 auto 34px; font-size: clamp(1.02rem, 2.2vw, 1.18rem); max-width: 62ch; }
+
+  .bf-preco-linha { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .bf-preco-mini { font-size: .92rem; color: var(--texto-fraco); }
+  .bf-preco-mini strong { color: var(--texto); font-family: var(--fonte-titulo); }
+
+  .bf-garantias {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px;
+    margin: 30px 0 0; padding: 0; list-style: none;
+    font-size: .9rem; color: var(--texto-medio);
+  }
+  .bf-garantias li { display: inline-flex; align-items: center; gap: 8px; }
+  .bf-garantias svg { color: var(--verde-vivo); flex-shrink: 0; }
+
+  /* botão "em breve" enquanto o link da Kiwify não existe */
+  [data-em-breve="sim"] { opacity: .55; cursor: not-allowed; }
+  [data-em-breve="sim"]:hover { transform: none; }
+
+  /* ---- ticker */
+  .bf-ticker {
+    border-block: 1px solid var(--borda); background: #000;
+    overflow: hidden; white-space: nowrap; padding: 15px 0;
+  }
+  .bf-ticker__trilho { display: inline-flex; animation: rola 38s linear infinite; }
+  .bf-ticker span {
+    font-family: var(--fonte-titulo); font-weight: 700; font-size: .95rem;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--texto-medio);
+    padding: 0 22px;
+  }
+  .bf-ticker span::after { content: "✦"; color: var(--verde-vivo); margin-left: 44px; }
+  @keyframes rola { to { transform: translateX(-50%); } }
+
+  /* ---- aulas */
+  .bf-aulas { display: grid; gap: 14px; counter-reset: aula; }
+  .bf-aula {
+    display: grid; grid-template-columns: auto 1fr; gap: 6px 24px;
+    padding: 26px 28px;
+    background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio);
+    transition: var(--transicao);
+  }
+  .bf-aula:hover { border-color: var(--borda-forte); }
+  .bf-aula__num {
+    grid-row: span 2;
+    font-family: var(--fonte-titulo); font-weight: 800; font-size: 2.3rem; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1.5px var(--verde-vivo);
+    min-width: 58px;
+  }
+  .bf-aula h3 { margin: 4px 0 4px; }
+  .bf-aula p { color: var(--texto-medio); font-size: .97rem; margin: 0; }
+  .bf-aula ul { grid-column: 2; margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+  .bf-aula li { position: relative; padding-left: 20px; font-size: .93rem; color: var(--texto-medio); }
+  .bf-aula li::before {
+    content: ""; position: absolute; left: 2px; top: .62em;
+    width: 7px; height: 7px; border-radius: 2px; background: var(--verde-vivo);
+  }
+  @media (max-width: 560px) {
+    .bf-aula { grid-template-columns: 1fr; padding: 22px 20px; }
+    .bf-aula__num { grid-row: auto; font-size: 1.9rem; margin-bottom: 6px; }
+    .bf-aula ul { grid-column: 1; }
+  }
+
+  /* destaque da planilha */
+  .bf-aula--bonus { border-color: rgba(47,191,42,.45); background: linear-gradient(135deg, rgba(47,191,42,.09), var(--superficie) 60%); }
+  .bf-tag {
+    display: inline-block; margin-left: 8px; vertical-align: middle;
+    padding: 2px 9px; border-radius: 100px;
+    background: var(--verde-vivo); color: #06120A;
+    font-family: var(--fonte-titulo); font-size: .68rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+
+  /* ---- para quem é */
+  .bf-duas { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 760px) { .bf-duas { grid-template-columns: 1fr; } }
+  .bf-lista { padding: 30px 28px; border-radius: var(--raio); border: 1px solid var(--borda); background: var(--superficie); }
+  .bf-lista h3 { margin-bottom: 18px; }
+  .bf-lista ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
+  .bf-lista li { display: flex; gap: 12px; font-size: .97rem; color: var(--texto-medio); }
+  .bf-lista li svg { flex-shrink: 0; margin-top: 4px; }
+  .bf-lista--sim svg { color: var(--verde-vivo); }
+  .bf-lista--nao svg { color: #D05050; }
+
+  /* ---- quem ensina */
+  .bf-autor {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(30px, 5vw, 64px); align-items: center;
+  }
+  @media (max-width: 860px) { .bf-autor { grid-template-columns: 1fr; } }
+  .bf-autor .videos { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 560px) {
+    .bf-autor .videos { grid-template-columns: repeat(3, 72%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+    .bf-autor .video-card { scroll-snap-align: start; }
+  }
+  .bf-autor .video-card__pe { padding: 12px 13px; gap: 9px; }
+  .bf-autor .video-card__inicial { width: 32px; height: 32px; font-size: .85rem; }
+  .bf-autor .video-card__nome { font-size: .88rem; }
+  .bf-autor .video-card__loja { font-size: .78rem; }
+  .bf-autor .video-card__play span { width: 52px; height: 52px; }
+  .bf-autor__legenda { margin-top: 14px; font-size: .86rem; color: var(--texto-fraco); }
+
+  /* ---- oferta */
+  .bf-oferta {
+    max-width: 620px; margin-inline: auto;
+    padding: clamp(30px, 5vw, 46px);
+    border-radius: var(--raio-lg);
+    border: 1px solid rgba(47,191,42,.5);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(47,191,42,.14), transparent 70%),
+      var(--superficie);
+    box-shadow: 0 30px 80px -40px rgba(47,191,42,.45);
+    text-align: center;
+  }
+  .bf-oferta h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 24px; }
+  .bf-inclui { list-style: none; margin: 0 0 30px; padding: 0; display: grid; gap: 11px; text-align: left; }
+  .bf-inclui li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding-bottom: 11px; border-bottom: 1px dashed var(--borda-forte);
+    font-size: .98rem;
+  }
+  .bf-inclui li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .bf-inclui svg { flex-shrink: 0; margin-top: 4px; color: var(--verde-vivo); }
+
+  .bf-valor { margin-bottom: 24px; }
+  .bf-valor__rotulo { font-size: .85rem; color: var(--texto-fraco); text-transform: uppercase; letter-spacing: .1em; font-family: var(--fonte-titulo); font-weight: 600; }
+  .bf-valor__num {
+    font-family: var(--fonte-titulo); font-weight: 800; line-height: 1;
+    font-size: clamp(3.4rem, 11vw, 4.8rem); letter-spacing: -0.04em; margin: 8px 0 6px;
+  }
+  .bf-valor__num small { font-size: .38em; vertical-align: .95em; margin-right: 4px; letter-spacing: 0; }
+  .bf-valor__pe { font-size: .92rem; color: var(--texto-medio); }
+  .bf-oferta .btn { white-space: normal; }
+  .bf-seguro { margin-top: 16px; font-size: .84rem; color: var(--texto-fraco); display: flex; justify-content: center; gap: 8px; align-items: center; }
+
+  .bf-garantia {
+    max-width: 620px; margin: 22px auto 0;
+    display: flex; gap: 18px; align-items: center;
+    padding: 22px 24px; border-radius: var(--raio); border: 1px solid var(--borda);
+  }
+  .bf-garantia__icone {
+    flex-shrink: 0; display: grid; place-items: center;
+    width: 54px; height: 54px; border-radius: 50%;
+    background: var(--verde-suave); color: var(--verde-vivo);
+    font-family: var(--fonte-titulo); font-weight: 800; font-size: 1.2rem;
+  }
+  .bf-garantia p { margin: 0; font-size: .94rem; color: var(--texto-medio); }
+  .bf-garantia strong { color: var(--texto); }
+
+  /* ---- rodapé enxuto */
+  .bf-rodape { border-top: 1px solid var(--borda); padding: 30px 0 110px; font-size: .84rem; color: var(--texto-fraco); }
+  .bf-rodape .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; align-items: center; }
+  .bf-rodape a:hover { color: var(--verde-vivo); }
+  .bf-rodape nav { display: flex; gap: 18px; flex-wrap: wrap; }
+
+  /* ---- barra fixa (celular) */
+  .bf-barra {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+    display: none; align-items: center; justify-content: space-between; gap: 14px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(8,9,8,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--borda-forte);
+    transform: translateY(110%); transition: transform 260ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  .bf-barra[data-visivel="sim"] { transform: none; }
+  .bf-barra__preco { font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.15rem; line-height: 1.1; }
+  .bf-barra__preco small { display: block; font-family: var(--fonte-texto); font-weight: 400; font-size: .74rem; color: var(--texto-fraco); }
+  .bf-barra .btn { padding: 13px 22px; font-size: .92rem; }
+  @media (max-width: 760px) { .bf-barra { display: flex; } }
+</style>
+</head>
+<body>
+
+<a class="pular" href="#oferta">Ir para a compra</a>
+
+<div class="bf-faixa"><span data-faltam>Black Friday 2026 · 27 de novembro</span></div>
+
+<header class="bf-topo">
+  <div class="wrap">
+    <a class="bf-logo" href="/"><img src="/assets/img/logo-transparente.png" alt="E-commerce Company" width="150" height="150"></a>
+  </div>
+</header>
+
+<!-- ======================================================== HERO ======= -->
+<section class="bf-hero">
+  <div class="wrap">
+    <span class="bf-selo"><b>Mini curso</b> Aulas gravadas · acesso imediato</span>
+
+    <h1>A Black Friday mais <span class="verde">lucrativa</span> da sua loja começa agora, não em novembro</h1>
+
+    <p class="subtitulo">
+      O passo a passo que uso com os e-commerces que atendo: como se preparar,
+      deixar site e Instagram prontos pra vender, quais campanhas rodar nos anúncios,
+      quais ofertas fazer sem destruir a margem, e como acompanhar o resultado dia a dia.
+    </p>
+
+    <div class="bf-preco-linha">
+      <a class="btn btn--primario btn--grande" data-checkout href="#oferta">Quero o mini curso por R$ 47</a>
+      <span class="bf-preco-mini">Pagamento único de <strong>R$ 47</strong> · Pix ou cartão</span>
+    </div>
+
+    <ul class="bf-garantias">
+      <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>6 aulas objetivas</li>
+      <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Planilha de acompanhamento inclusa</li>
+      <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Garantia de 7 dias</li>
+    </ul>
+  </div>
+</section>
+
+<div class="bf-ticker" aria-hidden="true">
+  <div class="bf-ticker__trilho">
+    <span>Preparação</span><span>Site</span><span>Instagram</span><span>Campanhas</span><span>Ofertas</span><span>Criativos</span><span>Planilha</span><span>Black Friday 2026</span>
+    <span>Preparação</span><span>Site</span><span>Instagram</span><span>Campanhas</span><span>Ofertas</span><span>Criativos</span><span>Planilha</span><span>Black Friday 2026</span>
+  </div>
+</div>
+
+<!-- ===================================================== PROBLEMA ====== -->
+<section class="secao">
+  <div class="wrap">
+    <div class="secao-topo aparece">
+      <span class="etiqueta">O problema</span>
+      <h2>Todo ano é a mesma coisa: a loja entra na Black Friday no improviso</h2>
+      <p class="subtitulo">E a conta chega em dezembro. Se você já passou por algum desses, esse curso é pra você:</p>
+    </div>
+
+    <ul class="dores aparece">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span><strong>Deu desconto em tudo e vendeu no prejuízo.</strong> Faturou mais, mas a margem sumiu no frete, na taxa e no cupom.</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span><strong>Subiu anúncio só na semana da Black</strong> e pagou o clique mais caro do ano, disputando com as grandes varejistas.</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span><strong>O site travou, o frete não calculou ou o cupom não funcionou</strong> justo no dia de maior tráfego.</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span><strong>O Instagram ficou parado até a véspera</strong> e ninguém sabia que a sua loja ia ter promoção.</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span><strong>Não sabia se estava indo bem ou mal</strong> até fechar o mês, porque não tinha meta nem acompanhamento diário.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================================================= AULAS ======= -->
+<section class="secao secao--alt" id="aulas">
+  <div class="wrap">
+    <div class="secao-topo aparece">
+      <span class="etiqueta">O que você vai aprender</span>
+      <h2>6 aulas diretas ao ponto, do planejamento à planilha</h2>
+      <p class="subtitulo">Gravadas pra você assistir no seu ritmo e aplicar na sua loja na mesma semana.</p>
+    </div>
+
+    <div class="bf-aulas aparece">
+      <article class="bf-aula">
+        <span class="bf-aula__num">01</span>
+        <h3>Como se preparar</h3>
+        <p>O que precisa estar resolvido antes de novembro pra Black Friday não virar incêndio.</p>
+        <ul>
+          <li>Meta de faturamento e quanto investir em anúncios pra chegar nela</li>
+          <li>Estoque, margem e quais produtos puxar pra frente</li>
+          <li>Calendário: aquecimento, semana da Black, o dia e o pós</li>
+        </ul>
+      </article>
+
+      <article class="bf-aula">
+        <span class="bf-aula__num">02</span>
+        <h3>Site e Instagram prontos pra vender</h3>
+        <p>O checklist pra loja aguentar o tráfego e converter quem chega.</p>
+        <ul>
+          <li>Vitrine, banners, página de produto, frete e checkout</li>
+          <li>Como aquecer o Instagram e criar expectativa antes da data</li>
+          <li>Captação de lista (WhatsApp e e-mail) pra avisar no dia</li>
+        </ul>
+      </article>
+
+      <article class="bf-aula">
+        <span class="bf-aula__num">03</span>
+        <h3>Quais campanhas fazer nos anúncios</h3>
+        <p>A estrutura de campanhas que monto pros meus clientes, fase por fase.</p>
+        <ul>
+          <li>Campanhas de aquecimento e construção de público</li>
+          <li>Remarketing e campanhas de conversão na semana da Black</li>
+          <li>Como distribuir o orçamento e quando aumentar a verba</li>
+        </ul>
+      </article>
+
+      <article class="bf-aula">
+        <span class="bf-aula__num">04</span>
+        <h3>Ofertas que vendem sem destruir a margem</h3>
+        <p>Desconto não é a única alavanca, e nem sempre é a melhor.</p>
+        <ul>
+          <li>Desconto progressivo, kits, frete grátis, brinde e compre-e-ganhe</li>
+          <li>Como calcular até onde dá pra ir no desconto</li>
+          <li>Qual oferta usar pra cada tipo de produto e de público</li>
+        </ul>
+      </article>
+
+      <article class="bf-aula">
+        <span class="bf-aula__num">05</span>
+        <h3>Sugestões de criativos</h3>
+        <p>Ideias prontas de anúncios pra adaptar à sua loja e ao seu produto.</p>
+        <ul>
+          <li>Formatos e ganchos que funcionam na Black Friday</li>
+          <li>Criativos pra cada fase: aquecimento, oferta e urgência</li>
+          <li>Como produzir com o que você já tem, sem estúdio</li>
+        </ul>
+      </article>
+
+      <article class="bf-aula bf-aula--bonus">
+        <span class="bf-aula__num">06</span>
+        <h3>Planilha de acompanhamento <span class="bf-tag">Inclusa</span></h3>
+        <p>A planilha pra você acompanhar a Black Friday dia a dia e agir rápido.</p>
+        <ul>
+          <li>Meta × realizado de faturamento, pedidos e ticket médio</li>
+          <li>Investimento, ROAS e custo por venda em um só lugar</li>
+          <li>Como ler os números e o que fazer quando algo sai da curva</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== PARA QUEM ======== -->
+<section class="secao">
+  <div class="wrap">
+    <div class="secao-topo secao-topo--centro aparece">
+      <span class="etiqueta">Para quem é</span>
+      <h2>Feito pro lojista que toca o próprio e-commerce</h2>
+    </div>
+
+    <div class="bf-duas aparece">
+      <div class="bf-lista bf-lista--sim">
+        <h3>É pra você se…</h3>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Tem uma loja virtual (Nuvemshop, Shopify, Tray, Loja Integrada ou outra)</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Quer um plano claro pra Black Friday em vez de ir no improviso</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Já anuncia ou quer começar a anunciar no Meta Ads</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Quer vender mais sem sacrificar a margem</li>
+        </ul>
+      </div>
+      <div class="bf-lista bf-lista--nao">
+        <h3>Não é pra você se…</h3>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Procura uma fórmula mágica sem precisar colocar a mão na massa</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Ainda não tem loja nem produto definido</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Quer um curso de horas e horas de teoria</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================== QUEM ENSINA ===== -->
+<section class="secao secao--alt">
+  <div class="wrap bf-autor">
+    <div class="aparece">
+      <span class="etiqueta">Quem ensina</span>
+      <h2>Marcos Censi, fundador da E-commerce Company</h2>
+      <p class="subtitulo">
+        Sou gestor de tráfego especializado em e-commerce. Na E-commerce Company
+        cuido dos anúncios de lojas virtuais de vários nichos,
+        e todo ano planejo a Black Friday de cada uma delas.
+      </p>
+      <p class="subtitulo">
+        Esse mini curso é o mesmo roteiro que sigo com esses clientes, condensado
+        pra você aplicar sozinho na sua loja.
+      </p>
+    </div>
+
+    <div class="aparece">
+      <div class="videos">
+        <div class="video-card">
+          <div class="video-card__player">
+            <video preload="none" playsinline poster="/assets/img/poster-depoimento-carla-musa-luz.jpg">
+              <source src="/assets/video/depoimento-carla-musa-luz.mp4" type="video/mp4">
+            </video>
+            <button class="video-card__play" type="button" aria-label="Assistir depoimento de Carla, da Musa Luz">
+              <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="video-card__pe">
+            <span class="video-card__inicial" aria-hidden="true">C</span>
+            <span><span class="video-card__nome">Carla</span><br><span class="video-card__loja">Musa Luz</span></span>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-card__player">
+            <video preload="none" playsinline poster="/assets/img/poster-depoimento-bruno-black-house.jpg">
+              <source src="/assets/video/depoimento-bruno-black-house.mp4" type="video/mp4">
+            </video>
+            <button class="video-card__play" type="button" aria-label="Assistir depoimento de Bruno, da Black House">
+              <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="video-card__pe">
+            <span class="video-card__inicial" aria-hidden="true">B</span>
+            <span><span class="video-card__nome">Bruno</span><br><span class="video-card__loja">Black House</span></span>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-card__player">
+            <video preload="none" playsinline poster="/assets/img/poster-depoimento-fernanda-ousada-moda.jpg">
+              <source src="/assets/video/depoimento-fernanda-ousada-moda.mp4" type="video/mp4">
+            </video>
+            <button class="video-card__play" type="button" aria-label="Assistir depoimento de Fernanda, da Ousada Moda">
+              <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="video-card__pe">
+            <span class="video-card__inicial" aria-hidden="true">F</span>
+            <span><span class="video-card__nome">Fernanda</span><br><span class="video-card__loja">Ousada Moda</span></span>
+          </div>
+        </div>
+      </div>
+      <p class="bf-autor__legenda">Lojistas atendidos pela E-commerce Company contando como foi trabalhar com a gente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= OFERTA ====== -->
+<section class="secao" id="oferta">
+  <div class="wrap">
+    <div class="bf-oferta aparece">
+      <span class="etiqueta">Mini curso Black Friday</span>
+      <h2>Tudo o que você recebe</h2>
+
+      <ul class="bf-inclui">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Aula de preparação: meta, estoque, margem e calendário</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Checklist de site e Instagram pra Black Friday</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Estrutura de campanhas nos anúncios, fase por fase</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Tipos de oferta e como calcular o desconto certo</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sugestões de criativos pra cada fase</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Planilha de acompanhamento de resultados</strong></span></li>
+      </ul>
+
+      <div class="bf-valor">
+        <div class="bf-valor__rotulo">Pagamento único</div>
+        <div class="bf-valor__num"><small>R$</small>47</div>
+        <div class="bf-valor__pe">no Pix ou no cartão · acesso imediato</div>
+      </div>
+
+      <a class="btn btn--primario btn--grande btn--bloco" data-checkout href="#oferta">Quero garantir minha vaga</a>
+
+      <div class="bf-seguro">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+        Compra segura processada pela Kiwify
+      </div>
+    </div>
+
+    <div class="bf-garantia aparece">
+      <div class="bf-garantia__icone">7</div>
+      <p><strong>Garantia incondicional de 7 dias.</strong> Assistiu e achou que não era pra você? Pede o reembolso direto na Kiwify dentro de 7 dias e recebe 100% de volta, sem precisar explicar nada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================= FAQ ======= -->
+<section class="secao secao--alt">
+  <div class="wrap">
+    <div class="secao-topo secao-topo--centro aparece">
+      <span class="etiqueta">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+
+    <div class="faq aparece">
+      <details>
+        <summary>Como recebo o acesso?</summary>
+        <div>Assim que o pagamento é aprovado, a Kiwify envia o acesso pro seu e-mail. No Pix e no cartão a liberação é imediata.</div>
+      </details>
+      <details>
+        <summary>As aulas são ao vivo?</summary>
+        <div>Não. São aulas gravadas: você assiste quando quiser, quantas vezes quiser, pelo computador ou pelo celular.</div>
+      </details>
+      <details>
+        <summary>Serve pra minha plataforma de loja?</summary>
+        <div>Sim. O conteúdo é sobre estratégia, anúncios, ofertas e acompanhamento, e vale pra Nuvemshop, Shopify, Tray, Loja Integrada, WooCommerce ou qualquer outra.</div>
+      </details>
+      <details>
+        <summary>Nunca anunciei. Consigo aplicar?</summary>
+        <div>Consegue. As aulas de preparação, site, Instagram, ofertas e a planilha valem pra qualquer loja. Na aula de campanhas eu mostro a estrutura e a lógica por trás, pra você montar ou pra cobrar de quem cuida dos seus anúncios.</div>
+      </details>
+      <details>
+        <summary>Ainda dá tempo de aplicar pra essa Black Friday?</summary>
+        <div>Dá, e quanto antes você começar, melhor. O curso é organizado por fases justamente pra você aplicar de onde estiver no calendário.</div>
+      </details>
+      <details>
+        <summary>E se eu não gostar?</summary>
+        <div>Você tem 7 dias de garantia. É só pedir o reembolso pela própria Kiwify e o valor volta integralmente.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================== CTA FINAL ======= -->
+<section class="secao">
+  <div class="wrap" style="text-align:center;max-width:760px">
+    <div class="aparece">
+      <h2>A Black Friday vai acontecer de qualquer jeito. A diferença é se a sua loja vai estar pronta.</h2>
+      <p class="subtitulo" style="margin:0 auto 30px">Por R$ 47, você sai com o plano, as campanhas, as ofertas e a planilha pra acompanhar tudo.</p>
+      <a class="btn btn--primario btn--grande" data-checkout href="#oferta">Quero o mini curso por R$ 47</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bf-rodape">
+  <div class="wrap">
+    <span>© 2026 <span data-preenche="razaoSocial">E-commerce Company</span> · CNPJ <span data-preenche="cnpj">—</span></span>
+    <nav>
+      <a href="/">E-commerce Company</a>
+      <a href="/politica-de-privacidade.html">Privacidade</a>
+      <a href="/termos-de-uso.html">Termos</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="bf-barra" data-visivel="nao">
+  <div class="bf-barra__preco">R$ 47<small>Mini curso Black Friday</small></div>
+  <a class="btn btn--primario" data-checkout href="#oferta">Comprar agora</a>
+</div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/black-friday.js" defer></script>
+</body>
+</html>

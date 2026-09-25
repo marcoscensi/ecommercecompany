@@ -35,6 +35,12 @@ window.ECC = {
   agendaEndpoint: "https://script.google.com/macros/s/AKfycbxPujHmiHJz1UWH1k12jtmfkAzm_M1s3c5Dqi4TleZW6VyCuUvsBIPOwyHZO3xz9zBJWA/exec",
   calendly: "https://calendly.com/marcos-censi-ecommercecompany/30min",
 
+  /* ---- Mini curso Black Friday (/black-friday/) -----------------------
+     Link do checkout da Kiwify. Enquanto vazio, os botões de compra
+     mostram "em breve" e não levam a lugar nenhum.                      */
+  checkoutBlackFriday: "",
+  precoBlackFriday: "47",
+
   /* ---- Rastreamento ---------------------------------------------------
      Deixe "" para desativar. Só o ID, sem aspas extras nem "act_".        */
   metaPixel: "383730134063729",     // Pixel E-commerce Company

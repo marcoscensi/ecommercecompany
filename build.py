@@ -390,6 +390,7 @@ def sitemap(posts):
     hoje = date.today().isoformat()
     urls = [(f"{SITE}/", hoje, "1.0"),
             (f"{SITE}/blog/", hoje, "0.8"),
+            (f"{SITE}/black-friday/", hoje, "0.7"),
             (f"{SITE}/politica-de-privacidade.html", hoje, "0.3"),
             (f"{SITE}/termos-de-uso.html", hoje, "0.3")]
     urls += [(f"{SITE}/blog/{p['slug']}/", p["data"].isoformat(), "0.6") for p in posts]
