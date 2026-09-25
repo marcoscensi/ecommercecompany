@@ -38,7 +38,7 @@ window.ECC = {
   /* ---- Mini curso Black Friday (/black-friday/) -----------------------
      Link do checkout da Kiwify. Enquanto vazio, os botões de compra
      mostram "em breve" e não levam a lugar nenhum.                      */
-  checkoutBlackFriday: "",
+  checkoutBlackFriday: "https://pay.kiwify.com.br/qlREsXI",
   precoBlackFriday: "47",
 
   /* ---- Rastreamento ---------------------------------------------------
