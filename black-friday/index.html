@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Mini Curso Black Friday para E-commerce — E-commerce Company</title>
+<title>Operação Black Friday: O Plano de Ação Direto ao Ponto para Lojistas</title>
 <meta name="description" content="Aprenda a preparar sua loja, seu Instagram, suas campanhas e suas ofertas para a Black Friday. Aulas gravadas + planilha de acompanhamento por R$ 47.">
 <link rel="canonical" href="https://ecommercecompany.com.br/black-friday/">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="E-commerce Company">
-<meta property="og:title" content="Mini Curso Black Friday para E-commerce — R$ 47">
+<meta property="og:title" content="Operação Black Friday: O Plano de Ação Direto ao Ponto para Lojistas — R$ 47">
 <meta property="og:description" content="Preparação, site e Instagram, campanhas, ofertas, criativos e planilha de acompanhamento. Aulas gravadas, acesso imediato.">
 <meta property="og:url" content="https://ecommercecompany.com.br/black-friday/">
 <meta property="og:image" content="https://ecommercecompany.com.br/assets/img/logo-fundo-escuro.png">
@@ -40,11 +40,6 @@
     letter-spacing: .01em;
   }
 
-  .bf-topo { padding: 22px 0 0; }
-  /* o PNG é quadrado com muita sobra: recorta só a marca */
-  .bf-logo { display: block; width: 146px; height: 46px; overflow: hidden; }
-  .bf-logo img { width: 200px; height: 200px; max-width: none; margin: -76px 0 0 -28px; }
-
   /* ---- hero */
   .bf-hero { position: relative; padding: clamp(46px, 8vw, 96px) 0 clamp(60px, 8vw, 100px); overflow: hidden; }
   .bf-hero::before {
@@ -53,18 +48,6 @@
     pointer-events: none;
   }
   .bf-hero .wrap { position: relative; text-align: center; max-width: 900px; }
-  .bf-selo {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 7px 15px 7px 8px; margin-bottom: 26px;
-    border: 1px solid var(--borda-forte); border-radius: 100px;
-    background: rgba(255,255,255,.03);
-    font-size: .86rem; color: var(--texto-medio);
-  }
-  .bf-selo b {
-    background: #fff; color: #000; border-radius: 100px;
-    padding: 3px 10px; font-family: var(--fonte-titulo); font-size: .72rem;
-    letter-spacing: .1em; text-transform: uppercase;
-  }
   .bf-hero h1 {
     font-size: clamp(2.15rem, 6.4vw, 4.1rem); font-weight: 800;
     letter-spacing: -0.035em; margin-bottom: 22px;
@@ -151,22 +134,16 @@
   .bf-lista--sim svg { color: var(--verde-vivo); }
   .bf-lista--nao svg { color: #D05050; }
 
+  /* ---- depoimentos */
+  .bf-depo { max-width: 900px; margin-inline: auto; }
+  @media (max-width: 760px) {
+    .bf-depo { grid-template-columns: repeat(3, 76%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+    .bf-depo .video-card { scroll-snap-align: start; }
+  }
+
   /* ---- quem ensina */
-  .bf-autor {
-    display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(30px, 5vw, 64px); align-items: center;
-  }
-  @media (max-width: 860px) { .bf-autor { grid-template-columns: 1fr; } }
-  .bf-autor .videos { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  @media (max-width: 560px) {
-    .bf-autor .videos { grid-template-columns: repeat(3, 72%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
-    .bf-autor .video-card { scroll-snap-align: start; }
-  }
-  .bf-autor .video-card__pe { padding: 12px 13px; gap: 9px; }
-  .bf-autor .video-card__inicial { width: 32px; height: 32px; font-size: .85rem; }
-  .bf-autor .video-card__nome { font-size: .88rem; }
-  .bf-autor .video-card__loja { font-size: .78rem; }
-  .bf-autor .video-card__play span { width: 52px; height: 52px; }
-  .bf-autor__legenda { margin-top: 14px; font-size: .86rem; color: var(--texto-fraco); }
+  .bf-autor { max-width: 760px; }
+  .bf-autor .subtitulo strong { color: var(--texto); }
 
   /* ---- oferta */
   .bf-oferta {
@@ -180,7 +157,8 @@
     box-shadow: 0 30px 80px -40px rgba(47,191,42,.45);
     text-align: center;
   }
-  .bf-oferta h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 24px; }
+  .bf-oferta h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin-bottom: 10px; }
+  .bf-oferta__sub { color: var(--texto-medio); margin-bottom: 22px; }
   .bf-inclui { list-style: none; margin: 0 0 30px; padding: 0; display: grid; gap: 11px; text-align: left; }
   .bf-inclui li {
     display: flex; gap: 12px; align-items: flex-start;
@@ -198,7 +176,7 @@
   }
   .bf-valor__num small { font-size: .38em; vertical-align: .95em; margin-right: 4px; letter-spacing: 0; }
   .bf-valor__pe { font-size: .92rem; color: var(--texto-medio); }
-  .bf-oferta .btn { white-space: normal; }
+  .bf-oferta .btn, .bf-hero .btn, .secao .btn--grande { white-space: normal; max-width: 100%; }
   .bf-seguro { margin-top: 16px; font-size: .84rem; color: var(--texto-fraco); display: flex; justify-content: center; gap: 8px; align-items: center; }
 
   .bf-garantia {
@@ -243,17 +221,9 @@
 
 <div class="bf-faixa"><span data-faltam>Black Friday 2026 · 27 de novembro</span></div>
 
-<header class="bf-topo">
-  <div class="wrap">
-    <a class="bf-logo" href="/"><img src="/assets/img/logo-transparente.png" alt="E-commerce Company" width="150" height="150"></a>
-  </div>
-</header>
-
 <!-- ======================================================== HERO ======= -->
 <section class="bf-hero">
   <div class="wrap">
-    <span class="bf-selo"><b>Mini curso</b> Aulas gravadas · acesso imediato</span>
-
     <h1>A Black Friday mais <span class="verde">lucrativa</span> da sua loja começa agora, não em novembro</h1>
 
     <p class="subtitulo">
@@ -263,7 +233,7 @@
     </p>
 
     <div class="bf-preco-linha">
-      <a class="btn btn--primario btn--grande" data-checkout href="#oferta">Quero o mini curso por R$ 47</a>
+      <a class="btn btn--primario btn--grande" data-checkout href="#oferta">Quero a Operação Black Friday por R$ 47</a>
       <span class="bf-preco-mini">Pagamento único de <strong>R$ 47</strong> · Pix ou cartão</span>
     </div>
 
@@ -301,8 +271,64 @@
   </div>
 </section>
 
+<!-- ================================================= DEPOIMENTOS ===== -->
+<section class="secao secao--alt">
+  <div class="wrap">
+    <div class="secao-topo secao-topo--centro aparece">
+      <span class="etiqueta">O que os clientes dizem</span>
+      <h2>Lojistas que já trabalham com a E-commerce Company</h2>
+      <p class="subtitulo">Aperte o play e ouça de quem tem a loja rodando com a gente.</p>
+    </div>
+
+    <div class="videos bf-depo aparece">
+      <div class="video-card">
+        <div class="video-card__player">
+          <video preload="none" playsinline poster="/assets/img/poster-depoimento-carla-musa-luz.jpg">
+            <source src="/assets/video/depoimento-carla-musa-luz.mp4" type="video/mp4">
+          </video>
+          <button class="video-card__play" type="button" aria-label="Assistir depoimento de Carla, da Musa Luz">
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+        </div>
+        <div class="video-card__pe">
+          <span class="video-card__inicial" aria-hidden="true">C</span>
+          <span><span class="video-card__nome">Carla</span><br><span class="video-card__loja">Musa Luz</span></span>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-card__player">
+          <video preload="none" playsinline poster="/assets/img/poster-depoimento-bruno-black-house.jpg">
+            <source src="/assets/video/depoimento-bruno-black-house.mp4" type="video/mp4">
+          </video>
+          <button class="video-card__play" type="button" aria-label="Assistir depoimento de Bruno, da Black House">
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+        </div>
+        <div class="video-card__pe">
+          <span class="video-card__inicial" aria-hidden="true">B</span>
+          <span><span class="video-card__nome">Bruno</span><br><span class="video-card__loja">Black House</span></span>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-card__player">
+          <video preload="none" playsinline poster="/assets/img/poster-depoimento-fernanda-ousada-moda.jpg">
+            <source src="/assets/video/depoimento-fernanda-ousada-moda.mp4" type="video/mp4">
+          </video>
+          <button class="video-card__play" type="button" aria-label="Assistir depoimento de Fernanda, da Ousada Moda">
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+        </div>
+        <div class="video-card__pe">
+          <span class="video-card__inicial" aria-hidden="true">F</span>
+          <span><span class="video-card__nome">Fernanda</span><br><span class="video-card__loja">Ousada Moda</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======================================================= AULAS ======= -->
-<section class="secao secao--alt" id="aulas">
+<section class="secao" id="aulas">
   <div class="wrap">
     <div class="secao-topo aparece">
       <span class="etiqueta">O que você vai aprender</span>
@@ -381,7 +407,7 @@
 </section>
 
 <!-- ================================================== PARA QUEM ======== -->
-<section class="secao">
+<section class="secao secao--alt">
   <div class="wrap">
     <div class="secao-topo secao-topo--centro aparece">
       <span class="etiqueta">Para quem é</span>
@@ -411,78 +437,31 @@
 </section>
 
 <!-- =================================================== QUEM ENSINA ===== -->
-<section class="secao secao--alt">
-  <div class="wrap bf-autor">
-    <div class="aparece">
+<section class="secao">
+  <div class="wrap">
+    <div class="bf-autor aparece">
       <span class="etiqueta">Quem ensina</span>
       <h2>Marcos Censi, fundador da E-commerce Company</h2>
       <p class="subtitulo">
-        Sou gestor de tráfego especializado em e-commerce. Na E-commerce Company
-        cuido dos anúncios de lojas virtuais de vários nichos,
-        e todo ano planejo a Black Friday de cada uma delas.
+        Sou gestor de tráfego especializado em e-commerce. Hoje gerencio
+        <strong>mais de R$ 200 mil por mês em mídia paga</strong> para lojas virtuais
+        de vários nichos, e todo ano planejo a Black Friday de cada uma delas.
       </p>
       <p class="subtitulo">
-        Esse mini curso é o mesmo roteiro que sigo com esses clientes, condensado
-        pra você aplicar sozinho na sua loja.
+        A Operação Black Friday é o mesmo roteiro que sigo com esses clientes,
+        condensado pra você aplicar sozinho na sua loja.
       </p>
-    </div>
-
-    <div class="aparece">
-      <div class="videos">
-        <div class="video-card">
-          <div class="video-card__player">
-            <video preload="none" playsinline poster="/assets/img/poster-depoimento-carla-musa-luz.jpg">
-              <source src="/assets/video/depoimento-carla-musa-luz.mp4" type="video/mp4">
-            </video>
-            <button class="video-card__play" type="button" aria-label="Assistir depoimento de Carla, da Musa Luz">
-              <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-            </button>
-          </div>
-          <div class="video-card__pe">
-            <span class="video-card__inicial" aria-hidden="true">C</span>
-            <span><span class="video-card__nome">Carla</span><br><span class="video-card__loja">Musa Luz</span></span>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-card__player">
-            <video preload="none" playsinline poster="/assets/img/poster-depoimento-bruno-black-house.jpg">
-              <source src="/assets/video/depoimento-bruno-black-house.mp4" type="video/mp4">
-            </video>
-            <button class="video-card__play" type="button" aria-label="Assistir depoimento de Bruno, da Black House">
-              <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-            </button>
-          </div>
-          <div class="video-card__pe">
-            <span class="video-card__inicial" aria-hidden="true">B</span>
-            <span><span class="video-card__nome">Bruno</span><br><span class="video-card__loja">Black House</span></span>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-card__player">
-            <video preload="none" playsinline poster="/assets/img/poster-depoimento-fernanda-ousada-moda.jpg">
-              <source src="/assets/video/depoimento-fernanda-ousada-moda.mp4" type="video/mp4">
-            </video>
-            <button class="video-card__play" type="button" aria-label="Assistir depoimento de Fernanda, da Ousada Moda">
-              <span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-            </button>
-          </div>
-          <div class="video-card__pe">
-            <span class="video-card__inicial" aria-hidden="true">F</span>
-            <span><span class="video-card__nome">Fernanda</span><br><span class="video-card__loja">Ousada Moda</span></span>
-          </div>
-        </div>
-      </div>
-      <p class="bf-autor__legenda">Lojistas atendidos pela E-commerce Company contando como foi trabalhar com a gente.</p>
     </div>
   </div>
 </section>
 
 <!-- ======================================================= OFERTA ====== -->
-<section class="secao" id="oferta">
+<section class="secao secao--alt" id="oferta">
   <div class="wrap">
     <div class="bf-oferta aparece">
-      <span class="etiqueta">Mini curso Black Friday</span>
-      <h2>Tudo o que você recebe</h2>
+      <span class="etiqueta">Operação Black Friday</span>
+      <h2>O Plano de Ação Direto ao Ponto para Lojistas</h2>
+      <p class="bf-oferta__sub">Tudo o que você recebe:</p>
 
       <ul class="bf-inclui">
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Aula de preparação: meta, estoque, margem e calendário</li>
@@ -515,7 +494,7 @@
 </section>
 
 <!-- ========================================================= FAQ ======= -->
-<section class="secao secao--alt">
+<section class="secao">
   <div class="wrap">
     <div class="secao-topo secao-topo--centro aparece">
       <span class="etiqueta">Dúvidas</span>
@@ -552,12 +531,12 @@
 </section>
 
 <!-- =================================================== CTA FINAL ======= -->
-<section class="secao">
+<section class="secao secao--alt">
   <div class="wrap" style="text-align:center;max-width:760px">
     <div class="aparece">
       <h2>A Black Friday vai acontecer de qualquer jeito. A diferença é se a sua loja vai estar pronta.</h2>
       <p class="subtitulo" style="margin:0 auto 30px">Por R$ 47, você sai com o plano, as campanhas, as ofertas e a planilha pra acompanhar tudo.</p>
-      <a class="btn btn--primario btn--grande" data-checkout href="#oferta">Quero o mini curso por R$ 47</a>
+      <a class="btn btn--primario btn--grande" data-checkout href="#oferta">Quero a Operação Black Friday por R$ 47</a>
     </div>
   </div>
 </section>
@@ -574,7 +553,7 @@
 </footer>
 
 <div class="bf-barra" data-visivel="nao">
-  <div class="bf-barra__preco">R$ 47<small>Mini curso Black Friday</small></div>
+  <div class="bf-barra__preco">R$ 47<small>Operação Black Friday</small></div>
   <a class="btn btn--primario" data-checkout href="#oferta">Comprar agora</a>
 </div>
 

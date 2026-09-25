@@ -1,5 +1,5 @@
 /* =========================================================================
-   /black-friday/ — mini curso (venda pela Kiwify)
+   /black-friday/ — Operação Black Friday (venda pela Kiwify)
    Botões de compra, contagem regressiva e barra fixa no celular.
    ========================================================================= */
 
@@ -31,14 +31,14 @@
     el.href = urlCheckout();
     el.addEventListener("click", function () {
       if (window.fbq) fbq("track", "InitiateCheckout", {
-        content_name: "mini-curso-black-friday",
+        content_name: "operacao-black-friday",
         value: Number(cfg.precoBlackFriday) || 47,
         currency: "BRL"
       });
       if (window.gtag && cfg.ga4) gtag("event", "begin_checkout", {
         currency: "BRL",
         value: Number(cfg.precoBlackFriday) || 47,
-        items: [{ item_name: "Mini curso Black Friday" }]
+        items: [{ item_name: "Operação Black Friday" }]
       });
     });
   });
