@@ -160,27 +160,10 @@
       <span class="etapa__dica">ou aperte <kbd>Enter ↵</kbd></span>
     </div>
   </section>
-
-  <!-- 2 · whatsapp -->
-  <section class="etapa" data-etapa="2">
-    <button class="voltar" type="button" data-volta>← voltar</button>
-    <div class="etapa__num">2 → 5</div>
-    <h2><span data-nome>Você</span>, qual seu WhatsApp?</h2>
-    <div class="campo">
-      <label for="whatsapp" class="pular">WhatsApp</label>
-      <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel-national" inputmode="numeric" placeholder="(00) 00000-0000" required>
-    </div>
-    <p class="etapa__erro" data-erro>Digite um WhatsApp válido com DDD.</p>
-    <div class="etapa__acoes">
-      <button class="btn btn--primario" type="button" data-avanca>OK</button>
-      <span class="etapa__dica">ou aperte <kbd>Enter ↵</kbd></span>
-    </div>
-  </section>
-
   <!-- 3 · site / instagram -->
   <section class="etapa" data-etapa="3">
     <button class="voltar" type="button" data-volta>← voltar</button>
-    <div class="etapa__num">3 → 5</div>
+    <div class="etapa__num">2 → 5</div>
     <h2>Qual o link do site ou Instagram da sua empresa?</h2>
     <div class="campo">
       <label for="loja" class="pular">Site ou Instagram</label>
@@ -192,11 +175,10 @@
       <span class="etapa__dica">ou aperte <kbd>Enter ↵</kbd></span>
     </div>
   </section>
-
   <!-- 4 · faturamento -->
   <section class="etapa" data-etapa="4">
     <button class="voltar" type="button" data-volta>← voltar</button>
-    <div class="etapa__num">4 → 5</div>
+    <div class="etapa__num">3 → 5</div>
     <h2><span data-nome>Você</span>, qual o faturamento médio mensal do seu e-commerce?</h2>
     <div class="opcoes" data-campo="faturamento">
       <button class="opcao" type="button" data-valor="Menos de 30 mil" data-desqualifica><kbd>A</kbd> Menos de 30 mil</button>
@@ -206,16 +188,31 @@
       <button class="opcao" type="button" data-valor="Acima de 500 mil"><kbd>E</kbd> Acima de 500 mil</button>
     </div>
   </section>
-
   <!-- 5 · investimento -->
   <section class="etapa" data-etapa="5">
     <button class="voltar" type="button" data-volta>← voltar</button>
-    <div class="etapa__num">5 → 5</div>
+    <div class="etapa__num">4 → 5</div>
     <h2>Para entregarmos resultados efetivos, o <span class="verde">investimento mínimo que recomendamos é de R$ 3.000 por mês</span>, além da nossa taxa de serviço.</h2>
     <p class="etapa__desc">Esse investimento seria viável pra você no momento?</p>
     <div class="opcoes" data-campo="investimento">
       <button class="opcao" type="button" data-valor="Sim, pronto para investir"><kbd>A</kbd> 🚀 Sim, estou pronto para investir no crescimento da minha empresa.</button>
       <button class="opcao" type="button" data-valor="Não é o momento" data-desqualifica><kbd>B</kbd> 🥲 Infelizmente não estou no momento de dar esse passo.</button>
+    </div>
+  </section>
+  <!-- 2 · whatsapp -->
+  <section class="etapa" data-etapa="2">
+    <button class="voltar" type="button" data-volta>← voltar</button>
+    <div class="etapa__num">5 → 5</div>
+    <h2>Por último, <span data-nome>Você</span>: qual seu WhatsApp?</h2>
+    <div class="campo">
+      <label for="whatsapp" class="pular">WhatsApp</label>
+      <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel-national" inputmode="numeric" placeholder="(00) 00000-0000" required>
+    </div>
+    <p class="etapa__desc" style="margin:-6px 0 18px;font-size:.93rem">É por aqui que eu te retorno. Não repassamos seu contato pra ninguém.</p>
+    <p class="etapa__erro" data-erro>Digite um WhatsApp válido com DDD.</p>
+    <div class="etapa__acoes">
+      <button class="btn btn--primario btn--grande" type="button" data-avanca>Concluir</button>
+      <span class="etapa__dica">ou aperte <kbd>Enter ↵</kbd></span>
     </div>
   </section>
 

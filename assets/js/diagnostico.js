@@ -15,7 +15,10 @@
   var cfg = window.ECC || {};
   var etapas = Array.prototype.slice.call(document.querySelectorAll(".etapa[data-etapa]"));
   var barra = document.getElementById("barra");
-  var ordem = ["0", "1", "2", "3", "4", "5"];
+  /* ordem das telas por data-etapa: nome, loja, faturamento, investimento, WhatsApp.
+     O WhatsApp ficou por último de propósito: pedir telefone cedo derrubava
+     ~70% de quem começava. */
+  var ordem = ["0", "1", "3", "4", "5", "2"];
   var atual = 0;
   var respostas = {};
   var enviado = false;
@@ -79,6 +82,7 @@
     erro(sec, false);
     if (ordem[atual] === "0") rastreiaInicio();
     if (ordem[atual] === "1") atualizaNome();
+    if (atual === ordem.length - 1) return finaliza(true);   /* WhatsApp: última tela */
     atual += 1;
     mostra(ordem[atual]);
   }
@@ -100,7 +104,6 @@
     respostas[grupo.getAttribute("data-campo")] = botao.getAttribute("data-valor");
 
     if (botao.hasAttribute("data-desqualifica")) return finaliza(false);
-    if (ordem[atual] === "5") return finaliza(true);
 
     atual += 1;
     mostra(ordem[atual]);
