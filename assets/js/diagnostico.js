@@ -7,12 +7,20 @@
      - qualificado -> /agendar/ (+ evento Lead no Pixel / generate_lead no GA4)
    Eventos: StartForm ao clicar em "Começar", Lead / LeadDesqualificado no fim.
    Cada resposta final (qualificado ou não) vira uma linha na planilha.
+
+   Serve a mais de uma página (/diagnostico/, /moda-praia/, ...). Cada uma
+   declara sua identidade em window.ECC_pagina ANTES de carregar este script:
+       window.ECC_pagina = { nicho: "moda-praia", rotulo: "/moda-praia" };
+   O content_name do Pixel continua "diagnostico" em todas, pra reaproveitar a
+   conversão personalizada já existente; o nicho vai em content_category, caso
+   você queira separar por nicho no Gerenciador depois.
    ========================================================================= */
 
 (function () {
   "use strict";
 
   var cfg = window.ECC || {};
+  var pagina = window.ECC_pagina || { nicho: "geral", rotulo: "/diagnostico" };
   var etapas = Array.prototype.slice.call(document.querySelectorAll(".etapa[data-etapa]"));
   var barra = document.getElementById("barra");
   /* ordem das telas por data-etapa: nome, loja, faturamento, investimento, WhatsApp.
@@ -91,8 +99,8 @@
   function rastreiaInicio() {
     if (iniciou) return;
     iniciou = true;
-    if (window.fbq) fbq("trackCustom", "StartForm", { content_name: "diagnostico" });
-    if (window.gtag && cfg.ga4) gtag("event", "start_form", { origem: "diagnostico" });
+    if (window.fbq) fbq("trackCustom", "StartForm", { content_name: "diagnostico", content_category: pagina.nicho });
+    if (window.gtag && cfg.ga4) gtag("event", "start_form", { origem: "diagnostico", nicho: pagina.nicho });
   }
 
   function volta() {
@@ -145,11 +153,11 @@
 
   function rastreia(qualificado) {
     if (window.fbq) {
-      if (qualificado) fbq("track", "Lead", { content_name: "diagnostico" });
-      else fbq("trackCustom", "LeadDesqualificado");
+      if (qualificado) fbq("track", "Lead", { content_name: "diagnostico", content_category: pagina.nicho });
+      else fbq("trackCustom", "LeadDesqualificado", { content_category: pagina.nicho });
     }
     if (window.gtag && cfg.ga4) {
-      gtag("event", qualificado ? "generate_lead" : "lead_desqualificado", { origem: "diagnostico" });
+      gtag("event", qualificado ? "generate_lead" : "lead_desqualificado", { origem: "diagnostico", nicho: pagina.nicho });
     }
   }
 
@@ -164,7 +172,7 @@
       loja: respostas.loja || "",
       faturamento: respostas.faturamento || "",
       plataforma: "",
-      desafio: "[Página /diagnostico] " +
+      desafio: "[Página " + pagina.rotulo + "] " +
                (respostas.qualificado ? "✅ QUALIFICADO" : "❌ Desqualificado") +
                " · Investir R$ 3 mil/mês: " + (respostas.investimento || "não chegou nessa pergunta"),
       origem: window.location.href,
