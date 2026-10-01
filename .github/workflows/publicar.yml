@@ -13,9 +13,11 @@ permissions:
   pages: write
   id-token: write
 
+# Deploys do Pages são enfileirados, não cancelados: cancelar um deploy já em
+# andamento faz o seguinte falhar em "deploy-pages".
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
