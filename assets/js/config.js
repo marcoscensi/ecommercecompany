@@ -31,7 +31,7 @@ window.ECC = {
   /* ---- Planilha separada da /trafego-pago/ ----------------------------
      App da Web do google-apps-script-trafego-pago.gs, ligado à planilha
      "Leads — Tráfego Pago (multinicho)". Vazio = cai na planilha principal. */
-  formEndpointTrafegoPago: "",
+  formEndpointTrafegoPago: "https://script.google.com/macros/s/AKfycbwIXanEYT1g6-5c_PZw5T6k0HMciTdwxiYhDeFMJJmBTCvWfnd-nutD3Gx8RR3fLgop0Q/exec",
 
   /* ---- Agendamento ----------------------------------------------------
      URL do App da Web do script google-apps-script-agenda.gs.
