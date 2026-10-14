@@ -23,10 +23,10 @@
   var pagina = window.ECC_pagina || { nicho: "geral", rotulo: "/diagnostico" };
   var etapas = Array.prototype.slice.call(document.querySelectorAll(".etapa[data-etapa]"));
   var barra = document.getElementById("barra");
-  /* ordem das telas por data-etapa: nome, loja, faturamento, investimento, WhatsApp.
-     O WhatsApp ficou por último de propósito: pedir telefone cedo derrubava
-     ~70% de quem começava. */
-  var ordem = ["0", "1", "3", "4", "5", "2"];
+  /* Ordem das telas por data-etapa. O WhatsApp ("2") fica por último de
+     propósito: pedir telefone cedo derrubava ~70% de quem começava.
+     Cada página pode definir a sua em ECC_pagina.ordem. */
+  var ordem = pagina.ordem || ["0", "1", "3", "4", "5", "2"];
   var atual = 0;
   var respostas = {};
   var enviado = false;
@@ -174,6 +174,7 @@
       plataforma: "",
       desafio: "[Página " + pagina.rotulo + "] " +
                (respostas.qualificado ? "✅ QUALIFICADO" : "❌ Desqualificado") +
+               (respostas.segmento ? " · Segmento: " + respostas.segmento : "") +
                " · Investir R$ 3 mil/mês: " + (respostas.investimento || "não chegou nessa pergunta"),
       origem: window.location.href,
       enviado: new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
