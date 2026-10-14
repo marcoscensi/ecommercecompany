@@ -28,6 +28,11 @@ window.ECC = {
      Enquanto estiver vazio, o formulário cai direto no WhatsApp.         */
   formEndpoint: "https://script.google.com/macros/s/AKfycbz7p4GcHdnZaHPG_-Dggg5z0eqxXu6GNDvnBInhzFQxJSwfk5eHg9hU3DZCTlyPN1i5/exec",
 
+  /* ---- Planilha separada da /trafego-pago/ ----------------------------
+     App da Web do google-apps-script-trafego-pago.gs, ligado à planilha
+     "Leads — Tráfego Pago (multinicho)". Vazio = cai na planilha principal. */
+  formEndpointTrafegoPago: "",
+
   /* ---- Agendamento ----------------------------------------------------
      URL do App da Web do script google-apps-script-agenda.gs.
      Passo a passo em LEIA-ME.md, seção "Agendamento".

@@ -162,7 +162,9 @@
   }
 
   function envia() {
-    if (enviado || !cfg.formEndpoint) return;
+    /* cada página pode ter sua própria planilha; sem isso, cai na principal */
+    var endpoint = pagina.formEndpoint || cfg.formEndpoint;
+    if (enviado || !endpoint) return;
     enviado = true;
 
     var dados = {
@@ -182,7 +184,7 @@
     if (window.ECC_utms) Object.assign(dados, window.ECC_utms());
 
     /* keepalive: continua enviando mesmo se a pessoa sair pro Calendly */
-    fetch(cfg.formEndpoint, {
+    fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(dados),
